@@ -114,8 +114,8 @@ public class BoiteSelection extends Boite{
 	return pointeur;
     }
 
-    public void setPointeur(Pointeur pointeur) {
-	this.pointeur = pointeur;
+    public void setPointeur(Pointeur pointeu) {
+	this.pointeur = pointeu;
     }
 
 }
