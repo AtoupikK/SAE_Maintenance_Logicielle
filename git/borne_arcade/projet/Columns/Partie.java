@@ -3,6 +3,7 @@ import MG2D.audio.Bruitage;
 import MG2D.geometrie.Dessin;
 import MG2D.geometrie.Point;
 import MG2D.geometrie.Texture;
+import MG2D.Couleur;
 
 import java.util.ArrayList;
 
