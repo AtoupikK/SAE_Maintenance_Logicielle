@@ -7,6 +7,7 @@ import java.awt.GraphicsEnvironment;
 import java.io.File;
 
 import MG2D.geometrie.*;
+import MG2D.Couleur;
 import MG2D.geometrie.Point;
 import MG2D.audio.*;
 import MG2D.*;

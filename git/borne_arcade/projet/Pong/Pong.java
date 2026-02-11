@@ -5,7 +5,7 @@ import MG2D.geometrie.Point;
 import MG2D.geometrie.Rectangle;
 import MG2D.geometrie.Texture;
 import MG2D.geometrie.Texte;
-import MG2D.geometrie.Couleur;
+import MG2D.Couleur;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -326,7 +326,7 @@ public class Pong {
 
     	scoreImg = new Texture[10];
     	for (int i=0;i<scoreImg.length;i++) {
-    		scoreImg[i] = new Texture("projet/Pong/img/"+i+".png", new Point(-500,-500));
+    		scoreImg[i] = new Texture("../Pong/img/"+i+".png", new Point(-500,-500));
     	}
 
     	scoreG=0;
@@ -398,5 +398,3 @@ public class Pong {
     }
 
 }
-
-	 

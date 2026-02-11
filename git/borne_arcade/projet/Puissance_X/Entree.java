@@ -17,7 +17,7 @@ class Entree extends KeyAdapter {
     }
 
     private boolean verifTouche(int touche, int intervalRepetition) {
-	Integer toucheInteger = new Integer(touche);
+	Integer toucheInteger = touche;
 	synchronized (derniereRecupTouche)
 	    {
 		if (derniereRecupTouche.containsKey(toucheInteger))

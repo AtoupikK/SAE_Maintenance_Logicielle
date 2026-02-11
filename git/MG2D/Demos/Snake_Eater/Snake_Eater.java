@@ -1,7 +1,7 @@
 import MG2D.Fenetre;
 import MG2D.Clavier;
 import MG2D.geometrie.Carre;
-import MG2D.geometrie.Couleur;
+import MG2D.Couleur;
 import MG2D.geometrie.Point;
 import MG2D.geometrie.Texte;
 import MG2D.geometrie.Texture;

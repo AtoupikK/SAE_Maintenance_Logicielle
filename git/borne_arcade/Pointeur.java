@@ -1,7 +1,7 @@
 import java.io.IOException;
 
 import MG2D.geometrie.Texture;
-import MG2D.geometrie.Couleur;
+import MG2D.Couleur;
 import MG2D.geometrie.Point;
 import MG2D.geometrie.Triangle;
 import MG2D.Clavier;
@@ -23,11 +23,12 @@ public class Pointeur {
 
     public void lancerJeu(ClavierBorneArcade clavier){
 	if(clavier.getBoutonJ1ATape()){
+		System.out.println("Touche f enfoncée.");
 
-	    //System.out.println(Graphique.tableau[getValue()].getChemin());
+		System.out.println("../borne_arcade/" + Graphique.tableau[getValue()].getNom()+".sh");
 	    try {
 		Graphique.stopMusiqueFond();
-		Process process = Runtime.getRuntime().exec("./"+Graphique.tableau[getValue()].getNom()+".sh");
+		Process process = Runtime.getRuntime().exec("../borne_arcade/" + Graphique.tableau[getValue()].getNom()+".sh");
 		process.waitFor();		//ajouté afin d'attendre la fin de l'exécution du jeu pour reprendre le contrôle sur le menu
 		Graphique.lectureMusiqueFond();
 	    } catch (IOException e) {

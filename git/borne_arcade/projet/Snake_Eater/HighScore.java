@@ -63,7 +63,7 @@ class HighScore{
 	Font font;
 	font = null;
 	try{
-	    File in = new File("/home/pi/git/borne_arcade/fonts/PrStart.ttf");
+	    File in = new File("../../fonts/PrStart.ttf");
 	    font = font.createFont(Font.TRUETYPE_FONT, in);
 	    font = font.deriveFont(64.0f);
 	}catch (Exception e) {

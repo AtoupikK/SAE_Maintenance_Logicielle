@@ -1,2 +1,2 @@
-cd projet/ball-blast
-python3.7 ./src
+cd ./projet/ball-blast
+python ./src

@@ -1,5 +1,6 @@
 import MG2D.Clavier;
 import MG2D.FenetrePleinEcran;
+import MG2D.Couleur;
 
 public class Main {
     static final int pasTemps=60;

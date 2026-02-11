@@ -9,7 +9,7 @@ import java.awt.FontMetrics;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
-class Jeu{ // Définition de la classe
+public class Jeu{ // Définition de la classe
 
     //static GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0];
     
@@ -465,7 +465,6 @@ class Jeu{ // Définition de la classe
 		}
 		catch(Exception e){}
 		*/
-
 		HighScore.demanderEnregistrerNom(fen,clavier,null,score,"highscore");
 	    }	    
 	}

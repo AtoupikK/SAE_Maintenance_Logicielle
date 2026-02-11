@@ -1,5 +1,5 @@
 import MG2D.geometrie.Carre;
-import MG2D.geometrie.Couleur;
+import MG2D.Couleur;
 import MG2D.geometrie.Point;
 
 
