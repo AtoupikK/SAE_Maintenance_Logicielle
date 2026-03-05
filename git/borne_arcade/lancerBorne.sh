@@ -3,8 +3,12 @@
 setxkbmap borne
 
 cd /home/pi/git/borne_arcade
+
+./setup-raspberry.sh
+
 echo "nettoyage des répertoires"
 echo "Veuillez patienter"
+
 ./clean.sh
 ./compilation.sh
 
