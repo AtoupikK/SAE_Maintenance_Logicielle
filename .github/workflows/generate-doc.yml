@@ -37,12 +37,14 @@ jobs:
       run: ollama pull deepseek-coder:6.7b
 
     - name: Compile project
-      cd git/borne_arcade
-      run: javac -cp "libs/javaparser-core-3.25.10.jar:." GenerateDoc.java
+      run: |
+        cd git/borne_arcade
+        javac -cp "libs/javaparser-core-3.25.10.jar:." GenerateDoc.java
 
     - name: Run doc generator
-      cd git/borne_arcade
-      run: java -cp "libs/javaparser-cpre-3.25.10.jar:." GenerateDoc
+      run: |
+        cd git/borne_arcade
+        java -cp "libs/javaparser-cpre-3.25.10.jar:." GenerateDoc
 
     - name: Commit changes
       run: |
