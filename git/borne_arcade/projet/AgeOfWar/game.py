@@ -12,7 +12,7 @@ pygame.display.set_caption("Age Of War")
 
 # ---- ASSETS ----
 
-ASSETS_PATH = r"D:\Dev\Der\SAE_Maintenance_Logicielle\git\borne_arcade\projet\AgeOfWar\assets\img"
+ASSETS_PATH = r"assets/img"
 
 terrain_img = pygame.image.load(os.path.join(ASSETS_PATH, "terrain.png")).convert()
 terrain_img = pygame.transform.scale(terrain_img, (SCREEN_WIDTH, SCREEN_HEIGHT))
