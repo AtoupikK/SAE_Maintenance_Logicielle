@@ -4,7 +4,11 @@ setxkbmap borne
 
 cd /home/pi/git/borne_arcade
 
-./setup-raspberry.sh
+read -p "Mettre à jour le système ? (y/n) " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    ./setup-raspberry.sh
+fi
 
 echo "nettoyage des répertoires"
 echo "Veuillez patienter"
