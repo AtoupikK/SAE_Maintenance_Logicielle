@@ -1,5 +1,8 @@
 name: Generer de la JavaDoc avec une IA Ollama
 
+permissions:
+  contents: write
+
 on:
   push:
     branches: [main]
