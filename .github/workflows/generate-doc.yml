@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "borne_arcade/*.java"
+      - "git/borne_arcade/*.java"
   workflow_dispatch:
 
 jobs:
@@ -42,7 +42,7 @@ jobs:
 
     - name: Run doc generator
       working-directory: git/borne_arcade
-      run: java -cp "libs/javaparser-cpre-3.25.10.jar:." GenerateDoc
+      run: java -cp "libs/javaparser-core-3.25.10.jar:." GenerateDoc
 
     - name: Commit changes
       run: |
