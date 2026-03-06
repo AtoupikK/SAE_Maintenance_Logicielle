@@ -14,7 +14,7 @@ public class GenerateDoc {
 
     public static void main(String[] args) throws Exception {
 
-        Path dir = Paths.get("borne_arcade");
+        Path dir = Paths.get("../borne_arcade");
 
         DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.java");
 
