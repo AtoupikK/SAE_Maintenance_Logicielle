@@ -60,6 +60,7 @@ public class Graphique {
 	try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(yourPath)) {
 	    for (Path path : directoryStream) {
 		cpt++;
+		System.out.println(cpt);
 	    }
 	} catch (IOException e) {
 	    e.printStackTrace();

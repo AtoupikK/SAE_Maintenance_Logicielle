@@ -1,5 +1,1 @@
-# Player Left
-Movement:Z/Q:Flèche Haut/Flèche Bas:Pause:P:Selectionner/Reprendre:F/G:Quitter:Esc:Interagir:aucun:Retour:aucun:aucun
-
-# Player Right
-Movement:Up/Down:Flèche Haut/Flèche Bas:Pause:Enter:Selectionner/Reprendre:H/R:Quitter:Backspace:Interagir:aucun:Retour:aucun:aucun
+Mouvement Snake:aucun:aucun:Quitter:aucun:aucun:aucun:
