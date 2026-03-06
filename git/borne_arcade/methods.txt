@@ -1,0 +1,1760 @@
+===== Fichier : Boite.java =====
+
+---- Méthode : getRectangle ----
+Signature : Rectangle getRectangle()
+Contenu :
+public Rectangle getRectangle() {
+    return rectangle;
+}
+
+---- Méthode : setRectangle ----
+Signature : void setRectangle(Rectangle)
+Contenu :
+public void setRectangle(Rectangle rectangle) {
+    this.rectangle = rectangle;
+}
+
+===== Fichier : BoiteDescription.java =====
+
+---- Méthode : lireFichier ----
+Signature : void lireFichier(String)
+Contenu :
+public void lireFichier(String path) {
+    //System.out.println(path);
+    String fichier = path + "/description.txt";
+    //lecture du fichier texte
+    try {
+        InputStream ips = new FileInputStream(fichier);
+        InputStreamReader ipsr = new InputStreamReader(ips);
+        BufferedReader br = new BufferedReader(ipsr);
+        String ligne;
+        while (/*(ligne=br.readLine())!=null &&*/
+        stop == false) {
+            ligne = br.readLine();
+            //System.out.println(ligne);
+            if (ligne != null) {
+                //changer message
+                message[nombreLigne].setTexte(ligne);
+                setMessage(ligne, nombreLigne);
+            } else {
+                //changer message
+                message[nombreLigne].setTexte("");
+                setMessage("", nombreLigne);
+            }
+            nombreLigne++;
+            if (nombreLigne >= 10) {
+                stop = true;
+                nombreLigne = 0;
+            }
+        }
+        stop = false;
+        br.close();
+    } catch (Exception e) {
+        System.err.println(e.toString());
+    }
+}
+
+---- Méthode : lireHighScore ----
+Signature : void lireHighScore(String)
+Contenu :
+public void lireHighScore(String path) {
+    for (int i = 0; i < 10; i++) {
+        if (i == 0)
+            listeHighScore[i].setTexte("1er - ");
+        else
+            listeHighScore[i].setTexte((i + 1) + "eme - ");
+    }
+    String fichier = path + "/highscore";
+    File f = new File(fichier);
+    if (!f.exists()) {
+        for (int i = 0; i < 10; i++) listeHighScore[i].setTexte("/");
+    } else {
+        ArrayList<LigneHighScore> liste = HighScore.lireFichier(fichier);
+        for (int i = 0; i < liste.size(); i++) {
+            if (i == 0)
+                listeHighScore[i].setTexte("1er : " + liste.get(i).getNom() + " - " + liste.get(i).getScore());
+            else
+                listeHighScore[i].setTexte((i + 1) + "eme : " + liste.get(i).getNom() + " -  " + liste.get(i).getScore());
+        }
+    }
+}
+
+---- Méthode : lireBouton ----
+Signature : void lireBouton(String)
+Contenu :
+public void lireBouton(String path) {
+    //System.out.println(path);
+    String fichier = path + "/bouton.txt";
+    //lecture du fichier texte
+    try {
+        InputStream ips = new FileInputStream(fichier);
+        InputStreamReader ipsr = new InputStreamReader(ips);
+        BufferedReader br = new BufferedReader(ipsr);
+        String ligne;
+        ligne = br.readLine();
+        if (ligne == null) {
+            System.err.println("le fichier bouton est vide!");
+        } else {
+            texteBouton = ligne.split(":");
+            //changer le texte des boutons
+            settJoystick(texteBouton[0]);
+            for (int i = 0; i < 6; i++) {
+                settBouton(texteBouton[i + 1], i);
+            }
+        }
+    } catch (Exception e) {
+        System.err.println(e);
+    }
+    ;
+}
+
+---- Méthode : getMessage ----
+Signature : Texte[] getMessage()
+Contenu :
+public Texte[] getMessage() {
+    return message;
+}
+
+---- Méthode : setMessage ----
+Signature : void setMessage(String, int)
+Contenu :
+public void setMessage(String message, int a) {
+    this.message[a].setTexte(message);
+}
+
+---- Méthode : getBouton ----
+Signature : Texture[] getBouton()
+Contenu :
+public Texture[] getBouton() {
+    return this.bouton;
+}
+
+---- Méthode : getJoystick ----
+Signature : Texture getJoystick()
+Contenu :
+public Texture getJoystick() {
+    return this.joystick;
+}
+
+---- Méthode : gettBouton ----
+Signature : Texte[] gettBouton()
+Contenu :
+public Texte[] gettBouton() {
+    return this.tBouton;
+}
+
+---- Méthode : gettJoystick ----
+Signature : Texte gettJoystick()
+Contenu :
+public Texte gettJoystick() {
+    return this.tJoystick;
+}
+
+---- Méthode : getHighscore ----
+Signature : Texte getHighscore()
+Contenu :
+public Texte getHighscore() {
+    return this.highscore;
+}
+
+---- Méthode : getListeHighScore ----
+Signature : Texte[] getListeHighScore()
+Contenu :
+public Texte[] getListeHighScore() {
+    return this.listeHighScore;
+}
+
+---- Méthode : settJoystick ----
+Signature : void settJoystick(String)
+Contenu :
+public void settJoystick(String s) {
+    this.tJoystick.setTexte(s);
+}
+
+---- Méthode : settBouton ----
+Signature : void settBouton(String, int)
+Contenu :
+public void settBouton(String s, int a) {
+    this.tBouton[a].setTexte(s);
+}
+
+===== Fichier : BoiteImage.java =====
+
+---- Méthode : getImage ----
+Signature : Texture getImage()
+Contenu :
+public Texture getImage() {
+    return this.image;
+}
+
+---- Méthode : setImage ----
+Signature : void setImage(String)
+Contenu :
+public void setImage(String chemin) {
+    this.image.setImg(chemin + "/photo_small.png");
+    //this.image.setTaille(400, 320);
+}
+
+===== Fichier : BoiteSelection.java =====
+
+---- Méthode : selection ----
+Signature : boolean selection(ClavierBorneArcade)
+Contenu :
+public boolean selection(ClavierBorneArcade clavier) {
+    Bruitage selection = new Bruitage("sound/bip.mp3");
+    font = null;
+    try {
+        File in = new File("fonts/PrStart.ttf");
+        font = font.createFont(Font.TRUETYPE_FONT, in);
+        font = font.deriveFont(26.0f);
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+    }
+    //Modifier le 07/11/2019 pour améliorer la navigation
+    /*
+	*	BACK:
+	*	repasse au premier élément du tableau lorsque la valeur du pointeur est égale à la 	*	taille du tableau-1
+	*
+	*	FRONT:
+	*	descend au dernier jeux de la liste afficher sur le menu  
+	*/
+    if (clavier.getJoyJ1HautTape() && (pointeur.getValue() <= Graphique.tableau.length - 1)) {
+        if (Graphique.textesAffiches[pointeur.getValue()] == false) {
+            Graphique.afficherTexte(pointeur.getValue());
+            Graphique.textesAffiches[pointeur.getValue()] = true;
+        }
+        selection.lecture();
+        if (pointeur.getValue() == Graphique.tableau.length - 1) {
+            pointeur.setValue(0);
+            for (int i = 0; i < Graphique.tableau.length; i++) {
+                Graphique.tableau[i].getTexte().translater(0, 110 * (Graphique.tableau.length - 1));
+                Graphique.tableau[i].getTexture().translater(0, 110 * (Graphique.tableau.length - 1));
+                Graphique.tableau[i].getTexte().setPolice(font);
+                Graphique.tableau[i].getTexte().setCouleur(Couleur.BLANC);
+            }
+        } else {
+            for (int i = 0; i < Graphique.tableau.length; i++) {
+                Graphique.tableau[i].getTexte().translater(0, -110);
+                Graphique.tableau[i].getTexture().translater(0, -110);
+                Graphique.tableau[i].getTexte().setPolice(font);
+                Graphique.tableau[i].getTexte().setCouleur(Couleur.BLANC);
+            }
+            pointeur.setValue(pointeur.getValue() + 1);
+        }
+    }
+    //Modifier le 07/11/2019 pour améliorer la navigation
+    /*
+	*	BACK:
+	*	repasse au dernier élément du tableau lorsque la valeur du pointeur est égale à 0
+	*
+	*	FRONT:
+	*	Remonte au premier jeux de la liste afficher sur le menu 
+	*/
+    if (clavier.getJoyJ1BasTape() && pointeur.getValue() >= 0) {
+        if (Graphique.textesAffiches[pointeur.getValue()] == false) {
+            Graphique.afficherTexte(pointeur.getValue());
+            Graphique.textesAffiches[pointeur.getValue()] = true;
+        }
+        try {
+            selection.lecture();
+        } catch (Exception e) {
+        }
+        if (pointeur.getValue() == 0) {
+            pointeur.setValue(Graphique.tableau.length - 1);
+            for (int i = 0; i < Graphique.tableau.length; i++) {
+                Graphique.tableau[i].getTexte().translater(0, -110 * (Graphique.tableau.length - 1));
+                Graphique.tableau[i].getTexture().translater(0, -110 * (Graphique.tableau.length - 1));
+                Graphique.tableau[i].getTexte().setPolice(font);
+                Graphique.tableau[i].getTexte().setCouleur(Couleur.BLANC);
+            }
+        } else {
+            for (int i = 0; i < Graphique.tableau.length; i++) {
+                Graphique.tableau[i].getTexte().translater(0, 110);
+                Graphique.tableau[i].getTexture().translater(0, 110);
+                Graphique.tableau[i].getTexte().setPolice(font);
+                Graphique.tableau[i].getTexte().setCouleur(Couleur.BLANC);
+            }
+            pointeur.setValue(pointeur.getValue() - 1);
+            System.out.println(pointeur.getValue());
+        }
+    }
+    if (clavier.getBoutonJ1ZTape()) {
+        return false;
+    }
+    return true;
+}
+
+---- Méthode : getPointeur ----
+Signature : Pointeur getPointeur()
+Contenu :
+public Pointeur getPointeur() {
+    return pointeur;
+}
+
+---- Méthode : setPointeur ----
+Signature : void setPointeur(Pointeur)
+Contenu :
+public void setPointeur(Pointeur pointeu) {
+    this.pointeur = pointeu;
+}
+
+===== Fichier : Bouton.java =====
+
+---- Méthode : remplirBouton ----
+Signature : void remplirBouton()
+Contenu :
+public static void remplirBouton() {
+    for (int i = 0; i < Graphique.tableau.length; i++) {
+        Graphique.tableau[i] = new Bouton();
+    }
+    Path yourPath = FileSystems.getDefault().getPath("projet/");
+    try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(yourPath)) {
+        int i = Graphique.tableau.length - 1;
+        for (Path path : directoryStream) {
+            Graphique.tableau[i].setTexte(new Texte(Couleur.NOIR, path.getFileName().toString(), new Font("Calibri", Font.TYPE1_FONT, 30), new Point(310, 510)));
+            Graphique.tableau[i].setTexture(new Texture("img/bouton2.png", new Point(100, 478), 400, 65));
+            for (int j = 0; j < Graphique.tableau.length - (i + 1); j++) {
+                Graphique.tableau[i].getTexte().translater(0, -110);
+                Graphique.tableau[i].getTexture().translater(0, -110);
+            }
+            Graphique.tableau[i].setChemin("projet/" + path.getFileName().toString());
+            Graphique.tableau[i].setNom(path.getFileName().toString());
+            Graphique.tableau[i].setNumeroDeJeu(i);
+            i--;
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+---- Méthode : getChemin ----
+Signature : String getChemin()
+Contenu :
+public String getChemin() {
+    return chemin;
+}
+
+---- Méthode : setChemin ----
+Signature : void setChemin(String)
+Contenu :
+public void setChemin(String chemin) {
+    this.chemin = chemin;
+}
+
+---- Méthode : getNom ----
+Signature : String getNom()
+Contenu :
+public String getNom() {
+    return nom;
+}
+
+---- Méthode : setNom ----
+Signature : void setNom(String)
+Contenu :
+public void setNom(String nom) {
+    this.nom = nom;
+}
+
+---- Méthode : getTexte ----
+Signature : Texte getTexte()
+Contenu :
+public Texte getTexte() {
+    return texte;
+}
+
+---- Méthode : setTexte ----
+Signature : void setTexte(Texte)
+Contenu :
+public void setTexte(Texte texte) {
+    this.texte = texte;
+}
+
+---- Méthode : getTexture ----
+Signature : Texture getTexture()
+Contenu :
+public Texture getTexture() {
+    return texture;
+}
+
+---- Méthode : setTexture ----
+Signature : void setTexture(Texture)
+Contenu :
+public void setTexture(Texture texture) {
+    this.texture = texture;
+}
+
+---- Méthode : getNumeroDeJeu ----
+Signature : int getNumeroDeJeu()
+Contenu :
+public int getNumeroDeJeu() {
+    return numeroDeJeu;
+}
+
+---- Méthode : setNumeroDeJeu ----
+Signature : void setNumeroDeJeu(int)
+Contenu :
+public void setNumeroDeJeu(int numeroDeJeu) {
+    this.numeroDeJeu = numeroDeJeu;
+}
+
+===== Fichier : ClavierBorneArcade.java =====
+
+---- Méthode : getJoyJ1GaucheEnfoncee ----
+Signature : boolean getJoyJ1GaucheEnfoncee()
+Contenu :
+// Accesseurs //
+// Getter //
+/**
+ * Permet de savoir si la touche "flèche gauche" est enfoncée ou non.
+ * @return retourne la valeur du booléen correspondant à la touche "flèche gauche" : vrai pour enfoncée, faux sinon.
+ */
+public boolean getJoyJ1GaucheEnfoncee() {
+    return gauche;
+}
+
+---- Méthode : getJoyJ1GaucheTape ----
+Signature : boolean getJoyJ1GaucheTape()
+Contenu :
+/**
+ * Permet de savoir si la touche "flèche gauche" a été appuyée puis relâchée.
+ * @return retourne la valeur du booléen correspondant à la touche "flèche gauche tapée" : vrai pour tapée, faux sinon.
+ */
+public boolean getJoyJ1GaucheTape() {
+    boolean aRetourner = gaucheTape;
+    gaucheTape = false;
+    return aRetourner;
+}
+
+---- Méthode : getJoyJ1DroiteEnfoncee ----
+Signature : boolean getJoyJ1DroiteEnfoncee()
+Contenu :
+/**
+ * Permet de savoir si la touche "flèche droite" est enfoncée ou non.
+ * @return retourne la valeur du booléen correspondant à la touche "flèche droite" : vrai pour enfoncée, faux sinon.
+ */
+public boolean getJoyJ1DroiteEnfoncee() {
+    return droite;
+}
+
+---- Méthode : getJoyJ1DroiteTape ----
+Signature : boolean getJoyJ1DroiteTape()
+Contenu :
+/**
+ * Permet de savoir si la touche "flèche droite" a été appuyée puis relâchée.
+ * @return retourne la valeur du booléen correspondant à la touche "flèche droite tapée" : vrai pour tapée, faux sinon.
+ */
+public boolean getJoyJ1DroiteTape() {
+    boolean aRetourner = droiteTape;
+    droiteTape = false;
+    return aRetourner;
+}
+
+---- Méthode : getJoyJ1HautEnfoncee ----
+Signature : boolean getJoyJ1HautEnfoncee()
+Contenu :
+/**
+ * Permet de savoir si la touche "flèche haut" est enfoncée ou non.
+ * @return retourne la valeur du booléen correspondant à la touche "flèche haut" : vrai pour enfoncée, faux sinon.
+ */
+public boolean getJoyJ1HautEnfoncee() {
+    return haut;
+}
+
+---- Méthode : getJoyJ1HautTape ----
+Signature : boolean getJoyJ1HautTape()
+Contenu :
+/**
+ * Permet de savoir si la touche "flèche haut" a été appuyée puis relâchée.
+ * @return retourne la valeur du booléen correspondant à la touche "flèche haut tapée" : vrai pour tapée, faux sinon.
+ */
+public boolean getJoyJ1HautTape() {
+    boolean aRetourner = hautTape;
+    hautTape = false;
+    return aRetourner;
+}
+
+---- Méthode : getJoyJ1BasEnfoncee ----
+Signature : boolean getJoyJ1BasEnfoncee()
+Contenu :
+/**
+ * Permet de savoir si la touche "flèche bas" est enfoncée ou non.
+ * @return retourne la valeur du booléen correspondant à la touche "flèche bas" : vrai pour enfoncée, faux sinon.
+ */
+public boolean getJoyJ1BasEnfoncee() {
+    return bas;
+}
+
+---- Méthode : getJoyJ1BasTape ----
+Signature : boolean getJoyJ1BasTape()
+Contenu :
+/**
+ * Permet de savoir si la touche "flèche bas" a été appuyée puis relâchée.
+ * @return retourne la valeur du booléen correspondant à la touche "flèche bas tapée" : vrai pour tapée, faux sinon.
+ */
+public boolean getJoyJ1BasTape() {
+    boolean aRetourner = basTape;
+    basTape = false;
+    return aRetourner;
+}
+
+---- Méthode : getBoutonJ2XEnfoncee ----
+Signature : boolean getBoutonJ2XEnfoncee()
+Contenu :
+/**
+ * Permet de savoir si la touche "a" est enfoncée ou non.
+ * @return retourne la valeur du booléen correspondant à la touche "a" : vrai pour enfoncée, faux sinon.
+ */
+public boolean getBoutonJ2XEnfoncee() {
+    return a;
+}
+
+---- Méthode : getBoutonJ2XTape ----
+Signature : boolean getBoutonJ2XTape()
+Contenu :
+/**
+ * Permet de savoir si la touche "a" a été appuyée puis relâchée.
+ * @return retourne la valeur du booléen correspondant à la touche "a tapée" : vrai pour tapée, faux sinon.
+ */
+public boolean getBoutonJ2XTape() {
+    boolean aRetourner = aTape;
+    aTape = false;
+    return aRetourner;
+}
+
+---- Méthode : getBoutonJ2YEnfoncee ----
+Signature : boolean getBoutonJ2YEnfoncee()
+Contenu :
+/**
+ * Permet de savoir si la touche "z" est enfoncée ou non.
+ * @return retourne la valeur du booléen correspondant à la touche "z" : vrai pour enfoncée, faux sinon.
+ */
+public boolean getBoutonJ2YEnfoncee() {
+    return z;
+}
+
+---- Méthode : getBoutonJ2YTape ----
+Signature : boolean getBoutonJ2YTape()
+Contenu :
+/**
+ * Permet de savoir si la touche "z" a été appuyée puis relâchée.
+ * @return retourne la valeur du booléen correspondant à la touche "z tapée" : vrai pour tapée, faux sinon.
+ */
+public boolean getBoutonJ2YTape() {
+    boolean aRetourner = zTape;
+    zTape = false;
+    return aRetourner;
+}
+
+---- Méthode : getBoutonJ2ZEnfoncee ----
+Signature : boolean getBoutonJ2ZEnfoncee()
+Contenu :
+/**
+ * Permet de savoir si la touche "e" est enfoncée ou non.
+ * @return retourne la valeur du booléen correspondant à la touche "e" : vrai pour enfoncée, faux sinon.
+ */
+public boolean getBoutonJ2ZEnfoncee() {
+    return e;
+}
+
+---- Méthode : getBoutonJ2ZTape ----
+Signature : boolean getBoutonJ2ZTape()
+Contenu :
+/**
+ * Permet de savoir si la touche "e" a été appuyée puis relâchée.
+ * @return retourne la valeur du booléen correspondant à la touche "e tapée" : vrai pour tapée, faux sinon.
+ */
+public boolean getBoutonJ2ZTape() {
+    boolean aRetourner = eTape;
+    eTape = false;
+    return aRetourner;
+}
+
+---- Méthode : getBoutonJ2AEnfoncee ----
+Signature : boolean getBoutonJ2AEnfoncee()
+Contenu :
+/**
+ * Permet de savoir si la touche "q" est enfoncée ou non.
+ * @return retourne la valeur du booléen correspondant à la touche "q" : vrai pour enfoncée, faux sinon.
+ */
+public boolean getBoutonJ2AEnfoncee() {
+    return q;
+}
+
+---- Méthode : getBoutonJ2ATape ----
+Signature : boolean getBoutonJ2ATape()
+Contenu :
+/**
+ * Permet de savoir si la touche "q" a été appuyée puis relâchée.
+ * @return retourne la valeur du booléen correspondant à la touche "q tapée" : vrai pour tapée, faux sinon.
+ */
+public boolean getBoutonJ2ATape() {
+    boolean aRetourner = qTape;
+    qTape = false;
+    return aRetourner;
+}
+
+---- Méthode : getBoutonJ2BEnfoncee ----
+Signature : boolean getBoutonJ2BEnfoncee()
+Contenu :
+/**
+ * Permet de savoir si la touche "s" est enfoncée ou non.
+ * @return retourne la valeur du booléen correspondant à la touche "s" : vrai pour enfoncée, faux sinon.
+ */
+public boolean getBoutonJ2BEnfoncee() {
+    return s;
+}
+
+---- Méthode : getBoutonJ2BTape ----
+Signature : boolean getBoutonJ2BTape()
+Contenu :
+/**
+ * Permet de savoir si la touche "s" a été appuyée puis relâchée.
+ * @return retourne la valeur du booléen correspondant à la touche "s tapée" : vrai pour tapée, faux sinon.
+ */
+public boolean getBoutonJ2BTape() {
+    boolean aRetourner = sTape;
+    sTape = false;
+    return aRetourner;
+}
+
+---- Méthode : getBoutonJ2CEnfoncee ----
+Signature : boolean getBoutonJ2CEnfoncee()
+Contenu :
+/**
+ * Permet de savoir si la touche "d" est enfoncée ou non.
+ * @return retourne la valeur du booléen correspondant à la touche "d" : vrai pour enfoncée, faux sinon.
+ */
+public boolean getBoutonJ2CEnfoncee() {
+    return d;
+}
+
+---- Méthode : getBoutonJ2CTape ----
+Signature : boolean getBoutonJ2CTape()
+Contenu :
+/**
+ * Permet de savoir si la touche "d" a été appuyée puis relâchée.
+ * @return retourne la valeur du booléen correspondant à la touche "d tapée" : vrai pour tapée, faux sinon.
+ */
+public boolean getBoutonJ2CTape() {
+    boolean aRetourner = dTape;
+    dTape = false;
+    return aRetourner;
+}
+
+---- Méthode : getJoyJ2GaucheEnfoncee ----
+Signature : boolean getJoyJ2GaucheEnfoncee()
+Contenu :
+/**
+ * Permet de savoir si la touche "k" est enfoncée ou non.
+ * @return retourne la valeur du booléen correspondant à la touche "k" : vrai pour enfoncée, faux sinon.
+ */
+public boolean getJoyJ2GaucheEnfoncee() {
+    return k;
+}
+
+---- Méthode : getJoyJ2GaucheTape ----
+Signature : boolean getJoyJ2GaucheTape()
+Contenu :
+/**
+ * Permet de savoir si la touche "k" a été appuyée puis relâchée.
+ * @return retourne la valeur du booléen correspondant à la touche "k tapée" : vrai pour tapée, faux sinon.
+ */
+public boolean getJoyJ2GaucheTape() {
+    boolean aRetourner = kTape;
+    kTape = false;
+    return aRetourner;
+}
+
+---- Méthode : getJoyJ2BasEnfoncee ----
+Signature : boolean getJoyJ2BasEnfoncee()
+Contenu :
+/**
+ * Permet de savoir si la touche "l" est enfoncée ou non.
+ * @return retourne la valeur du booléen correspondant à la touche "l" : vrai pour enfoncée, faux sinon.
+ */
+public boolean getJoyJ2BasEnfoncee() {
+    return l;
+}
+
+---- Méthode : getJoyJ2BasTape ----
+Signature : boolean getJoyJ2BasTape()
+Contenu :
+/**
+ * Permet de savoir si la touche "l" a été appuyée puis relâchée.
+ * @return retourne la valeur du booléen correspondant à la touche "l tapée" : vrai pour tapée, faux sinon.
+ */
+public boolean getJoyJ2BasTape() {
+    boolean aRetourner = lTape;
+    lTape = false;
+    return aRetourner;
+}
+
+---- Méthode : getJoyJ2DroiteTape ----
+Signature : boolean getJoyJ2DroiteTape()
+Contenu :
+/**
+ * Permet de savoir si la touche "m" a été appuyée puis relâchée.
+ * @return retourne la valeur du booléen correspondant à la touche "m tapée" : vrai pour tapée, faux sinon.
+ */
+public boolean getJoyJ2DroiteTape() {
+    boolean aRetourner = mTape;
+    mTape = false;
+    return aRetourner;
+}
+
+---- Méthode : getJoyJ2DroiteEnfoncee ----
+Signature : boolean getJoyJ2DroiteEnfoncee()
+Contenu :
+/**
+ * Permet de savoir si la touche "m" est enfoncée ou non.
+ * @return retourne la valeur du booléen correspondant à la touche "m" : vrai pour enfoncée, faux sinon.
+ */
+public boolean getJoyJ2DroiteEnfoncee() {
+    return m;
+}
+
+---- Méthode : getJoyJ2HautEnfoncee ----
+Signature : boolean getJoyJ2HautEnfoncee()
+Contenu :
+/**
+ * Permet de savoir si la touche "o" est enfoncée ou non.
+ * @return retourne la valeur du booléen correspondant à la touche "o" : vrai pour enfoncée, faux sinon.
+ */
+public boolean getJoyJ2HautEnfoncee() {
+    return o;
+}
+
+---- Méthode : getJoyJ2HautTape ----
+Signature : boolean getJoyJ2HautTape()
+Contenu :
+/**
+ * Permet de savoir si la touche "o" a été appuyée puis relâchée.
+ * @return retourne la valeur du booléen correspondant à la touche "o tapée" : vrai pour tapée, faux sinon.
+ */
+public boolean getJoyJ2HautTape() {
+    boolean aRetourner = oTape;
+    oTape = false;
+    return aRetourner;
+}
+
+---- Méthode : getBoutonJ1ATape ----
+Signature : boolean getBoutonJ1ATape()
+Contenu :
+/**
+ * Permet de savoir si la touche "f" a été appuyée puis relâchée.
+ * @return retourne la valeur du booléen correspondant à la touche "f tapée" : vrai pour tapée, faux sinon.
+ */
+public boolean getBoutonJ1ATape() {
+    boolean aRetourner = fTape;
+    fTape = false;
+    return aRetourner;
+}
+
+---- Méthode : getBoutonJ1AEnfoncee ----
+Signature : boolean getBoutonJ1AEnfoncee()
+Contenu :
+/**
+ * Permet de savoir si la touche "f" est enfoncée ou non.
+ * @return retourne la valeur du booléen correspondant à la touche "f" : vrai pour enfoncée, faux sinon.
+ */
+public boolean getBoutonJ1AEnfoncee() {
+    return f;
+}
+
+---- Méthode : getBoutonJ1BTape ----
+Signature : boolean getBoutonJ1BTape()
+Contenu :
+/**
+ * Permet de savoir si la touche "g" a été appuyée puis relâchée.
+ * @return retourne la valeur du booléen correspondant à la touche "g tapée" : vrai pour tapée, faux sinon.
+ */
+public boolean getBoutonJ1BTape() {
+    boolean aRetourner = gTape;
+    gTape = false;
+    return aRetourner;
+}
+
+---- Méthode : getBoutonJ1BEnfoncee ----
+Signature : boolean getBoutonJ1BEnfoncee()
+Contenu :
+/**
+ * Permet de savoir si la touche "g" est enfoncée ou non.
+ * @return retourne la valeur du booléen correspondant à la touche "g" : vrai pour enfoncée, faux sinon.
+ */
+public boolean getBoutonJ1BEnfoncee() {
+    return g;
+}
+
+---- Méthode : getBoutonJ1CTape ----
+Signature : boolean getBoutonJ1CTape()
+Contenu :
+/**
+ * Permet de savoir si la touche "h" a été appuyée puis relâchée.
+ * @return retourne la valeur du booléen correspondant à la touche "h tapée" : vrai pour tapée, faux sinon.
+ */
+public boolean getBoutonJ1CTape() {
+    boolean aRetourner = hTape;
+    hTape = false;
+    return aRetourner;
+}
+
+---- Méthode : getBoutonJ1CEnfoncee ----
+Signature : boolean getBoutonJ1CEnfoncee()
+Contenu :
+/**
+ * Permet de savoir si la touche "h" est enfoncée ou non.
+ * @return retourne la valeur du booléen correspondant à la touche "h" : vrai pour enfoncée, faux sinon.
+ */
+public boolean getBoutonJ1CEnfoncee() {
+    return h;
+}
+
+---- Méthode : getBoutonJ1XTape ----
+Signature : boolean getBoutonJ1XTape()
+Contenu :
+/**
+ * Permet de savoir si la touche "r" a été appuyée puis relâchée.
+ * @return retourne la valeur du booléen correspondant à la touche "r tapée" : vrai pour tapée, faux sinon.
+ */
+public boolean getBoutonJ1XTape() {
+    boolean aRetourner = rTape;
+    rTape = false;
+    return aRetourner;
+}
+
+---- Méthode : getBoutonJ1XEnfoncee ----
+Signature : boolean getBoutonJ1XEnfoncee()
+Contenu :
+/**
+ * Permet de savoir si la touche "r" est enfoncée ou non.
+ * @return retourne la valeur du booléen correspondant à la touche "r" : vrai pour enfoncée, faux sinon.
+ */
+public boolean getBoutonJ1XEnfoncee() {
+    return r;
+}
+
+---- Méthode : getBoutonJ1YTape ----
+Signature : boolean getBoutonJ1YTape()
+Contenu :
+/**
+ * Permet de savoir si la touche "t" a été appuyée puis relâchée.
+ * @return retourne la valeur du booléen correspondant à la touche "t tapée" : vrai pour tapée, faux sinon.
+ */
+public boolean getBoutonJ1YTape() {
+    boolean aRetourner = tTape;
+    tTape = false;
+    return aRetourner;
+}
+
+---- Méthode : getBoutonJ1YEnfoncee ----
+Signature : boolean getBoutonJ1YEnfoncee()
+Contenu :
+/**
+ * Permet de savoir si la touche "t" est enfoncée ou non.
+ * @return retourne la valeur du booléen correspondant à la touche "t" : vrai pour enfoncée, faux sinon.
+ */
+public boolean getBoutonJ1YEnfoncee() {
+    return t;
+}
+
+---- Méthode : getBoutonJ1ZTape ----
+Signature : boolean getBoutonJ1ZTape()
+Contenu :
+/**
+ * Permet de savoir si la touche "y" a été appuyée puis relâchée.
+ * @return retourne la valeur du booléen correspondant à la touche "y tapée" : vrai pour tapée, faux sinon.
+ */
+public boolean getBoutonJ1ZTape() {
+    boolean aRetourner = yTape;
+    yTape = false;
+    return aRetourner;
+}
+
+---- Méthode : getBoutonJ1ZEnfoncee ----
+Signature : boolean getBoutonJ1ZEnfoncee()
+Contenu :
+/**
+ * Permet de savoir si la touche "y" est enfoncée ou non.
+ * @return retourne la valeur du booléen correspondant à la touche "y" : vrai pour enfoncée, faux sinon.
+ */
+public boolean getBoutonJ1ZEnfoncee() {
+    return y;
+}
+
+---- Méthode : reinitialisation ----
+Signature : void reinitialisation()
+Contenu :
+// Méthodes //
+/**
+ * Méthode permettant la reinitialisation du clavier. Reinitialisation de tous les événements.
+ */
+public void reinitialisation() {
+    gauche = gaucheTape = droite = droiteTape = false;
+    haut = hautTape = bas = basTape = false;
+    a = d = e = k = l = m = o = q = s = z = false;
+    aTape = dTape = eTape = kTape = lTape = mTape = oTape = qTape = sTape = zTape = false;
+    f = g = h = r = t = y = false;
+    fTape = gTape = hTape = rTape = tTape = yTape = false;
+}
+
+---- Méthode : keyReleased ----
+Signature : void keyReleased(KeyEvent)
+Contenu :
+/**
+ * Implémentation de la méthode KeyReleased - méthode appelée automatiquement lors d'un événement clavier.
+ * <br /><br />
+ * Elle permet de mettre à jour les valeurs des attributs en fonction des interactions au clavier.<br />
+ * Ici, si une touche est relâchée, l'attribut gérant cette touche est mis à jour.<br />
+ * Pour la gestion sur l'appui des touches, voir la méthode keyPressed ( KeyEvent k ).
+ * @param key un événement clavier.
+ * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/awt/event/KeyEvent.html" target="_blank">KeyEvent</a>
+ * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/awt/event/KeyListener.html" target="_blank">KeyListener</a>
+ * @see #keyPressed keyPressed ( KeyEvent k )
+ */
+@Override
+public void keyReleased(KeyEvent key) {
+    switch(key.getKeyCode()) {
+        case KeyEvent.VK_F:
+            f = false;
+            fTape = true;
+            break;
+        case KeyEvent.VK_G:
+            g = false;
+            gTape = true;
+            break;
+        case KeyEvent.VK_H:
+            h = false;
+            hTape = true;
+            break;
+        case KeyEvent.VK_R:
+            r = false;
+            rTape = true;
+            break;
+        case KeyEvent.VK_T:
+            t = false;
+            tTape = true;
+            break;
+        case KeyEvent.VK_Y:
+            y = false;
+            yTape = true;
+            break;
+        case KeyEvent.VK_LEFT:
+            gauche = false;
+            gaucheTape = true;
+            break;
+        case KeyEvent.VK_RIGHT:
+            droite = false;
+            droiteTape = true;
+            break;
+        case KeyEvent.VK_UP:
+            haut = false;
+            hautTape = true;
+            break;
+        case KeyEvent.VK_DOWN:
+            bas = false;
+            basTape = true;
+            break;
+        case KeyEvent.VK_A:
+            a = false;
+            aTape = true;
+            break;
+        case KeyEvent.VK_D:
+            d = false;
+            dTape = true;
+            break;
+        case KeyEvent.VK_E:
+            e = false;
+            eTape = true;
+            break;
+        case KeyEvent.VK_K:
+            k = false;
+            kTape = true;
+            break;
+        case KeyEvent.VK_L:
+            l = false;
+            lTape = true;
+            break;
+        case KeyEvent.VK_M:
+            m = false;
+            mTape = true;
+            break;
+        case KeyEvent.VK_O:
+            o = false;
+            oTape = true;
+            break;
+        case KeyEvent.VK_Q:
+            q = false;
+            qTape = true;
+            break;
+        case KeyEvent.VK_S:
+            s = false;
+            sTape = true;
+            break;
+        case KeyEvent.VK_Z:
+            z = false;
+            zTape = true;
+            break;
+    }
+}
+
+---- Méthode : keyTyped ----
+Signature : void keyTyped(KeyEvent)
+Contenu :
+/**
+ * Implémentation de la méthode KeyTyped - méthode appelee automatiquement lors d'un événement clavier.
+ * <br /><br />
+ * Cette méthode doit etre implémentee mais est inutile dans ce moteur.
+ */
+@Override
+public void keyTyped(KeyEvent k) {
+}
+
+---- Méthode : keyPressed ----
+Signature : void keyPressed(KeyEvent)
+Contenu :
+/**
+ * Implémentation de la méthode KeyPressed - méthode appelee automatiquement lors d'un événement clavier.
+ * <br /><br />
+ * Elle permet de mettre a jour les valeurs des attributs en fonction des interactions au clavier.<br />
+ * Ici, si une touche est pressee, l'attribut gerant cette touche est mis a jour.<br />
+ * Pour la gestion du relachement des touches, voir la méthode keyReleased ( KeyEvent k ).
+ * @param key un événement clavier.
+ * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/awt/event/KeyEvent.html" target="_blank">KeyEvent</a>
+ * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/awt/event/KeyListener.html" target="_blank">KeyListener</a>
+ * @see #keyReleased keyReleased ( KeyEvent k )
+ */
+@Override
+public void keyPressed(KeyEvent key) {
+    switch(key.getKeyCode()) {
+        case KeyEvent.VK_F:
+            f = true;
+            break;
+        case KeyEvent.VK_G:
+            g = true;
+            break;
+        case KeyEvent.VK_H:
+            h = true;
+            break;
+        case KeyEvent.VK_R:
+            r = true;
+            break;
+        case KeyEvent.VK_T:
+            t = true;
+            break;
+        case KeyEvent.VK_Y:
+            y = true;
+            break;
+        case KeyEvent.VK_LEFT:
+            gauche = true;
+            break;
+        case KeyEvent.VK_RIGHT:
+            droite = true;
+            break;
+        case KeyEvent.VK_UP:
+            haut = true;
+            break;
+        case KeyEvent.VK_DOWN:
+            bas = true;
+            break;
+        case KeyEvent.VK_A:
+            a = true;
+            break;
+        case KeyEvent.VK_D:
+            d = true;
+            break;
+        case KeyEvent.VK_E:
+            e = true;
+            break;
+        case KeyEvent.VK_K:
+            k = true;
+            break;
+        case KeyEvent.VK_L:
+            l = true;
+            break;
+        case KeyEvent.VK_M:
+            m = true;
+            break;
+        case KeyEvent.VK_O:
+            o = true;
+            break;
+        case KeyEvent.VK_Q:
+            q = true;
+            break;
+        case KeyEvent.VK_S:
+            s = true;
+            break;
+        case KeyEvent.VK_Z:
+            z = true;
+            break;
+    }
+}
+
+===== Fichier : Graphique.java =====
+
+---- Méthode : selectionJeu ----
+Signature : void selectionJeu()
+Contenu :
+public void selectionJeu() {
+    Texture fondBlancTransparent = new Texture("./img/blancTransparent.png", new Point(0, 0));
+    Rectangle boutonNon = new Rectangle(Couleur.ROUGE, new Point(340, 600), 200, 100, true);
+    Rectangle boutonOui = new Rectangle(Couleur.VERT, new Point(740, 600), 200, 100, true);
+    Texte message = new Texte(Couleur.NOIR, "Voulez vous vraiment quitter ?", font, new Point(640, 800));
+    Texte non = new Texte(Couleur.NOIR, "NON", font, new Point(440, 650));
+    Texte oui = new Texte(Couleur.NOIR, "OUI", font, new Point(840, 650));
+    Rectangle rectSelection = new Rectangle(Couleur.BLEU, new Point(330, 590), 220, 120, true);
+    int frame = 0;
+    boolean fermetureMenu = false;
+    int selectionSur = 0;
+    Texte textePrec = tableau[pointeur.getValue()].getTexte();
+    while (true) {
+        try {
+            if (frame == 0) {
+                if (textesAffiches[pointeur.getValue()] == true) {
+                    f.supprimer(tableau[pointeur.getValue()].getTexte());
+                    textesAffiches[pointeur.getValue()] = false;
+                }
+            }
+            if (frame == 3) {
+                if (textesAffiches[pointeur.getValue()] == false) {
+                    f.ajouter(tableau[pointeur.getValue()].getTexte());
+                    textesAffiches[pointeur.getValue()] = true;
+                }
+            }
+            if (frame == 6) {
+                frame = -1;
+            }
+            frame++;
+            // System.out.println("frame n°"+frame);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        try {
+            Thread.sleep(50);
+        } catch (Exception e) {
+        }
+        if (!fermetureMenu) {
+            if (bs.selection(clavier)) {
+                bi.setImage(tableau[pointeur.getValue()].getChemin());
+                fontSelect = null;
+                try {
+                    File in = new File("fonts/PrStart.ttf");
+                    fontSelect = fontSelect.createFont(Font.TRUETYPE_FONT, in);
+                    fontSelect = fontSelect.deriveFont(48.0f);
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
+                // if(!tableau[pointeur.getValue()].getTexte().getPolice().equals(fontSelect)){
+                // tableau[pointeur.getValue()].getTexte().setPolice(fontSelect);
+                // }
+                tableau[pointeur.getValue()].getTexte().setPolice(font);
+                bd.lireFichier(tableau[pointeur.getValue()].getChemin());
+                bd.lireHighScore(tableau[pointeur.getValue()].getChemin());
+                bd.lireBouton(tableau[pointeur.getValue()].getChemin());
+                /*
+				// System.out.println(tableau[pointeur.getValue()].getChemin());
+				// bd.setMessage(tableau[pointeur.getValue()].getNom());
+				*/
+                pointeur.lancerJeu(clavier);
+            } else {
+                f.ajouter(fondBlancTransparent);
+                f.ajouter(message);
+                f.ajouter(rectSelection);
+                f.ajouter(boutonNon);
+                f.ajouter(boutonOui);
+                f.ajouter(non);
+                f.ajouter(oui);
+                fermetureMenu = true;
+            }
+        } else {
+            if (clavier.getJoyJ1DroiteEnfoncee()) {
+                selectionSur = 1;
+            }
+            if (clavier.getJoyJ1GaucheEnfoncee()) {
+                selectionSur = 0;
+            }
+            if (selectionSur == 0) {
+                rectSelection.setA(new Point(330, 590));
+                rectSelection.setB(new Point(550, 710));
+            } else {
+                rectSelection.setB(new Point(950, 710));
+                rectSelection.setA(new Point(730, 590));
+            }
+            if (clavier.getBoutonJ1ATape()) {
+                if (selectionSur == 0) {
+                    f.supprimer(fondBlancTransparent);
+                    f.supprimer(message);
+                    f.supprimer(rectSelection);
+                    f.supprimer(boutonNon);
+                    f.supprimer(boutonOui);
+                    f.supprimer(non);
+                    f.supprimer(oui);
+                    fermetureMenu = false;
+                } else {
+                    System.exit(0);
+                }
+            }
+        }
+        f.rafraichir();
+    }
+    //fin while true
+}
+
+---- Méthode : lectureMusiqueFond ----
+Signature : void lectureMusiqueFond()
+Contenu :
+public static void lectureMusiqueFond() {
+    musiqueFond = new Bruitage("sound/bg/" + tableauMusiques[(int) (Math.random() * cptMus)]);
+    musiqueFond.lecture();
+}
+
+---- Méthode : stopMusiqueFond ----
+Signature : void stopMusiqueFond()
+Contenu :
+public static void stopMusiqueFond() {
+    if (musiqueFond != null) {
+        musiqueFond.arret();
+    }
+}
+
+---- Méthode : afficherTexte ----
+Signature : void afficherTexte(int)
+Contenu :
+public static void afficherTexte(int valeur) {
+    f.ajouter(tableau[valeur].getTexte());
+}
+
+===== Fichier : HighScore.java =====
+
+---- Méthode : suivant ----
+Signature : char suivant(char)
+Contenu :
+public static char suivant(char c) {
+    if (c >= 'A' && c < 'Z')
+        return (char) (c + 1);
+    if (c == 'Z')
+        return '.';
+    if (c == '.')
+        return ' ';
+    return 'A';
+}
+
+---- Méthode : precedent ----
+Signature : char precedent(char)
+Contenu :
+public static char precedent(char c) {
+    if (c > 'A' && c <= 'Z')
+        return (char) (c - 1);
+    if (c == 'A')
+        return ' ';
+    if (c == ' ')
+        return '.';
+    return 'Z';
+}
+
+---- Méthode : demanderEnregistrerNom ----
+Signature : void demanderEnregistrerNom(Fenetre, ClavierBorneArcade, Texture, int, String)
+Contenu :
+public static void demanderEnregistrerNom(Fenetre f, ClavierBorneArcade clavier, Texture t, int s, String fichierHighScore) {
+    ArrayList<LigneHighScore> list = lireFichier(fichierHighScore);
+    for (LigneHighScore l : list) System.out.println(l);
+    int position = 0;
+    boolean fin = false;
+    while (!fin) {
+        if (position == list.size())
+            fin = true;
+        else if (s <= list.get(position).getScore())
+            position++;
+        else {
+            fin = true;
+        }
+    }
+    //System.out.println("position : "+position);
+    if (position >= 10)
+        System.exit(0);
+    String score = s + "";
+    char[] cprec = { ' ', ' ', ' ' };
+    char[] c = { 'A', ' ', ' ', '#' };
+    char[] csuiv = { ' ', ' ', ' ' };
+    int indexSelec = 0;
+    Font font;
+    font = null;
+    try {
+        File in = new File("/home/pi/git/borne_arcade/fonts/PrStart.ttf");
+        font = font.createFont(Font.TRUETYPE_FONT, in);
+        font = font.deriveFont(40.0f);
+    } catch (Exception e) {
+        System.err.println(e.getMessage());
+    }
+    Texte highscore = new Texte(Couleur.NOIR, "H  I  G  H  S  C  O  R  E", font, new Point(640, 950));
+    Texte scoreAtteint = new Texte(Couleur.NOIR, score, font, new Point(420, 400));
+    Texte enterYourName = new Texte(Couleur.NOIR, "E n t e r   Y o u r   n a m e", font, new Point(640, 800));
+    Texte posNum = new Texte(Couleur.NOIR, (position + 1) + "eme", font, new Point(120, 400));
+    if (position == 0)
+        posNum.setTexte("1er");
+    Texte posNumPrec = new Texte(Couleur.NOIR, "", font, new Point(120, 580));
+    Texte posNumSuiv = new Texte(Couleur.NOIR, "", font, new Point(120, 170));
+    Texte[] caracteres = new Texte[4];
+    caracteres[0] = new Texte(Couleur.NOIR, c[0] + "", font, new Point(690, 400));
+    caracteres[1] = new Texte(Couleur.NOIR, c[1] + "", font, new Point(840, 400));
+    caracteres[2] = new Texte(Couleur.NOIR, c[2] + "", font, new Point(990, 400));
+    caracteres[3] = new Texte(Couleur.NOIR, c[3] + "", font, new Point(1140, 400));
+    Texte[] caracteresPrec = new Texte[3];
+    caracteresPrec[0] = new Texte(Couleur.NOIR, cprec[0] + "", font, new Point(690, 580));
+    caracteresPrec[1] = new Texte(Couleur.NOIR, cprec[1] + "", font, new Point(840, 580));
+    caracteresPrec[2] = new Texte(Couleur.NOIR, cprec[2] + "", font, new Point(990, 580));
+    Texte scorePrec = new Texte(Couleur.NOIR, "", font, new Point(420, 580));
+    Texte[] caracteresSuiv = new Texte[3];
+    caracteresSuiv[0] = new Texte(Couleur.NOIR, csuiv[0] + "", font, new Point(690, 170));
+    caracteresSuiv[1] = new Texte(Couleur.NOIR, csuiv[1] + "", font, new Point(840, 170));
+    caracteresSuiv[2] = new Texte(Couleur.NOIR, csuiv[2] + "", font, new Point(990, 170));
+    Texte scoreSuiv = new Texte(Couleur.NOIR, "", font, new Point(420, 170));
+    Rectangle rect1 = new Rectangle(Couleur.NOIR, new Point(650, 350), new Point(720, 480), false);
+    Rectangle rect2 = new Rectangle(Couleur.NOIR, new Point(800, 350), new Point(870, 480), false);
+    Rectangle rect3 = new Rectangle(Couleur.NOIR, new Point(950, 350), new Point(1020, 480), false);
+    Rectangle rect4 = new Rectangle(Couleur.NOIR, new Point(1100, 350), new Point(1170, 480), false);
+    Triangle select = new Triangle(Couleur.NOIR, new Point(690, 340), new Point(670, 300), new Point(710, 300), true);
+    Texture blancTrans = new Texture("img/blancTransparent.png", new Point(0, 0));
+    if (t != null)
+        f.ajouter(t);
+    f.ajouter(blancTrans);
+    f.ajouter(highscore);
+    f.ajouter(scoreAtteint);
+    f.ajouter(scorePrec);
+    f.ajouter(scoreSuiv);
+    f.ajouter(enterYourName);
+    f.ajouter(caracteres[0]);
+    f.ajouter(caracteres[1]);
+    f.ajouter(caracteres[2]);
+    f.ajouter(caracteres[3]);
+    f.ajouter(caracteresPrec[0]);
+    f.ajouter(caracteresPrec[1]);
+    f.ajouter(caracteresPrec[2]);
+    f.ajouter(caracteresSuiv[0]);
+    f.ajouter(caracteresSuiv[1]);
+    f.ajouter(caracteresSuiv[2]);
+    f.ajouter(posNum);
+    f.ajouter(posNumPrec);
+    f.ajouter(posNumSuiv);
+    f.ajouter(rect1);
+    f.ajouter(rect2);
+    f.ajouter(rect3);
+    f.ajouter(rect4);
+    f.ajouter(select);
+    if (position != 0) {
+        //System.out.println("ajout du record precedent");
+        caracteresPrec[0].setTexte(list.get(position - 1).getNom().charAt(0) + "");
+        caracteresPrec[1].setTexte(list.get(position - 1).getNom().charAt(1) + "");
+        caracteresPrec[2].setTexte(list.get(position - 1).getNom().charAt(2) + "");
+        scorePrec.setTexte(list.get(position - 1).getScore() + "");
+        if (position == 1)
+            posNumPrec.setTexte("1er");
+        else
+            posNumPrec.setTexte(position + "eme");
+    }
+    if (position != list.size()) {
+        //System.out.println("ajout du record suivant");
+        caracteresSuiv[0].setTexte(list.get(position).getNom().charAt(0) + "");
+        caracteresSuiv[1].setTexte(list.get(position).getNom().charAt(1) + "");
+        caracteresSuiv[2].setTexte(list.get(position).getNom().charAt(2) + "");
+        scoreSuiv.setTexte(list.get(position).getScore() + "");
+        posNumSuiv.setTexte((position + 2) + "eme");
+    }
+    fin = false;
+    while (!fin) {
+        try {
+            Thread.sleep(10);
+        } catch (Exception e) {
+        }
+        if (clavier.getJoyJ1DroiteTape()) {
+            if (indexSelec < 3) {
+                indexSelec++;
+                select.translater(150, 0);
+            }
+        }
+        if (clavier.getJoyJ1GaucheTape()) {
+            if (indexSelec > 0) {
+                indexSelec--;
+                select.translater(-150, 0);
+            }
+        }
+        if (clavier.getJoyJ1HautTape()) {
+            if (indexSelec != 3) {
+                c[indexSelec] = suivant(c[indexSelec]);
+                caracteres[indexSelec].setTexte(c[indexSelec] + "");
+            }
+        }
+        if (clavier.getJoyJ1BasTape()) {
+            if (indexSelec != 3) {
+                c[indexSelec] = precedent(c[indexSelec]);
+                caracteres[indexSelec].setTexte(c[indexSelec] + "");
+            }
+        }
+        if (clavier.getBoutonJ1ATape() && indexSelec == 3)
+            fin = true;
+        f.rafraichir();
+    }
+    enregistrerFichier(fichierHighScore, list, "" + c[0] + c[1] + c[2], s);
+    System.exit(0);
+}
+
+---- Méthode : lireFichier ----
+Signature : ArrayList<LigneHighScore> lireFichier(String)
+Contenu :
+public static ArrayList<LigneHighScore> lireFichier(String fichier) {
+    ArrayList<LigneHighScore> l = new ArrayList<LigneHighScore>();
+    try {
+        BufferedReader reader = new BufferedReader(new FileReader(fichier));
+        String currentLine;
+        while ((currentLine = reader.readLine()) != null) {
+            l.add(new LigneHighScore(currentLine));
+        }
+        reader.close();
+    } catch (Exception e) {
+    }
+    return l;
+}
+
+---- Méthode : enregistrerFichier ----
+Signature : void enregistrerFichier(String, ArrayList<LigneHighScore>, String, int)
+Contenu :
+public static void enregistrerFichier(String fichier, ArrayList<LigneHighScore> list, String nom, int score) {
+    int position = 0;
+    boolean fin = false;
+    while (!fin) {
+        if (position == list.size())
+            fin = true;
+        else if (score <= list.get(position).getScore())
+            position++;
+        else {
+            fin = true;
+        }
+    }
+    list.add(position, new LigneHighScore(nom, score));
+    while (list.size() > 10) list.remove(list.size() - 1);
+    try {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(fichier));
+        for (int i = 0; i < list.size(); i++) {
+            writer.write(list.get(i).toString());
+            if (i != (list.size() - 1))
+                writer.write("\n");
+        }
+        writer.close();
+    } catch (Exception e) {
+    }
+}
+
+===== Fichier : LigneHighScore.java =====
+
+---- Méthode : getScore ----
+Signature : int getScore()
+Contenu :
+public int getScore() {
+    return score;
+}
+
+---- Méthode : getNom ----
+Signature : String getNom()
+Contenu :
+public String getNom() {
+    return nom;
+}
+
+---- Méthode : toString ----
+Signature : String toString()
+Contenu :
+public String toString() {
+    return nom + "-" + score;
+}
+
+===== Fichier : Main.java =====
+
+---- Méthode : main ----
+Signature : void main(String[])
+Contenu :
+public static void main(String[] args) {
+    Graphique g = new Graphique();
+    while (true) {
+        try {
+            // Thread.sleep(250);
+        } catch (Exception e) {
+        }
+        ;
+        g.selectionJeu();
+    }
+}
+
+===== Fichier : Pointeur.java =====
+
+---- Méthode : lancerJeu ----
+Signature : void lancerJeu(ClavierBorneArcade)
+Contenu :
+public void lancerJeu(ClavierBorneArcade clavier) {
+    if (clavier.getBoutonJ1ATape()) {
+        System.out.println("Touche f enfoncée.");
+        System.out.println("../borne_arcade/" + Graphique.tableau[getValue()].getNom() + ".sh");
+        try {
+            Graphique.stopMusiqueFond();
+            Process process = Runtime.getRuntime().exec("../borne_arcade/" + Graphique.tableau[getValue()].getNom() + ".sh");
+            //ajouté afin d'attendre la fin de l'exécution du jeu pour reprendre le contrôle sur le menu
+            process.waitFor();
+            Graphique.lectureMusiqueFond();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (Exception e) {
+            //on catche toutes les exceptions, nécessaire pour le waitFor()
+            e.printStackTrace();
+        }
+        //System.out.println("le process sur "+Graphique.tableau[getValue()].getChemin()+" est bien lancé");
+    }
+}
+
+---- Méthode : getValue ----
+Signature : int getValue()
+Contenu :
+public int getValue() {
+    return value;
+}
+
+---- Méthode : setValue ----
+Signature : void setValue(int)
+Contenu :
+public void setValue(int value) {
+    this.value = value;
+}
+
+---- Méthode : getTriangleGauche ----
+Signature : Texture getTriangleGauche()
+Contenu :
+public Texture getTriangleGauche() {
+    return triangleGauche;
+}
+
+---- Méthode : setTriangleGauche ----
+Signature : void setTriangleGauche(Texture)
+Contenu :
+public void setTriangleGauche(Texture triangleGauche) {
+    this.triangleGauche = triangleGauche;
+}
+
+---- Méthode : getTriangleDroite ----
+Signature : Texture getTriangleDroite()
+Contenu :
+public Texture getTriangleDroite() {
+    return triangleDroite;
+}
+
+---- Méthode : setTriangleDroite ----
+Signature : void setTriangleDroite(Texture)
+Contenu :
+public void setTriangleDroite(Texture triangleDroite) {
+    this.triangleDroite = triangleDroite;
+}
+
+---- Méthode : getRectangleCentre ----
+Signature : Texture getRectangleCentre()
+Contenu :
+public Texture getRectangleCentre() {
+    return rectangleCentre;
+}
+
+---- Méthode : setRectangleCentre ----
+Signature : void setRectangleCentre(Texture)
+Contenu :
+public void setRectangleCentre(Texture rectangleCentre) {
+    this.rectangleCentre = rectangleCentre;
+}
+
+===== Fichier : TestClavierBorneArcade.java =====
+
+---- Méthode : main ----
+Signature : void main(String[])
+Contenu :
+public static void main(String[] args) {
+    Fenetre f = new Fenetre("Test du clavier pour la borne d'arcade", 1000, 260);
+    ClavierBorneArcade clavier = new ClavierBorneArcade();
+    f.addKeyListener(clavier);
+    Cercle joy1Haut = new Cercle(Couleur.GRIS_CLAIR, new Point(100, 200), 30, true);
+    f.ajouter(joy1Haut);
+    Cercle joy1Bas = new Cercle(Couleur.GRIS_CLAIR, new Point(100, 80), 30, true);
+    f.ajouter(joy1Bas);
+    Cercle joy1Gauche = new Cercle(Couleur.GRIS_CLAIR, new Point(50, 140), 30, true);
+    f.ajouter(joy1Gauche);
+    Cercle joy1Droite = new Cercle(Couleur.GRIS_CLAIR, new Point(150, 140), 30, true);
+    f.ajouter(joy1Droite);
+    Cercle bouton1A = new Cercle(Couleur.GRIS_CLAIR, new Point(270, 80), 30, true);
+    f.ajouter(bouton1A);
+    Cercle bouton1B = new Cercle(Couleur.GRIS_CLAIR, new Point(350, 120), 30, true);
+    f.ajouter(bouton1B);
+    Cercle bouton1C = new Cercle(Couleur.GRIS_CLAIR, new Point(450, 100), 30, true);
+    f.ajouter(bouton1C);
+    Cercle bouton1X = new Cercle(Couleur.GRIS_CLAIR, new Point(250, 160), 30, true);
+    f.ajouter(bouton1X);
+    Cercle bouton1Y = new Cercle(Couleur.GRIS_CLAIR, new Point(330, 200), 30, true);
+    f.ajouter(bouton1Y);
+    Cercle bouton1Z = new Cercle(Couleur.GRIS_CLAIR, new Point(430, 180), 30, true);
+    f.ajouter(bouton1Z);
+    Cercle joy2Haut = new Cercle(Couleur.GRIS_CLAIR, new Point(600, 200), 30, true);
+    f.ajouter(joy2Haut);
+    Cercle joy2Bas = new Cercle(Couleur.GRIS_CLAIR, new Point(600, 80), 30, true);
+    f.ajouter(joy2Bas);
+    Cercle joy2Gauche = new Cercle(Couleur.GRIS_CLAIR, new Point(550, 140), 30, true);
+    f.ajouter(joy2Gauche);
+    Cercle joy2Droite = new Cercle(Couleur.GRIS_CLAIR, new Point(650, 140), 30, true);
+    f.ajouter(joy2Droite);
+    Cercle bouton2A = new Cercle(Couleur.GRIS_CLAIR, new Point(770, 80), 30, true);
+    f.ajouter(bouton2A);
+    Cercle bouton2B = new Cercle(Couleur.GRIS_CLAIR, new Point(850, 120), 30, true);
+    f.ajouter(bouton2B);
+    Cercle bouton2C = new Cercle(Couleur.GRIS_CLAIR, new Point(950, 100), 30, true);
+    f.ajouter(bouton2C);
+    Cercle bouton2X = new Cercle(Couleur.GRIS_CLAIR, new Point(750, 160), 30, true);
+    f.ajouter(bouton2X);
+    Cercle bouton2Y = new Cercle(Couleur.GRIS_CLAIR, new Point(830, 200), 30, true);
+    f.ajouter(bouton2Y);
+    Cercle bouton2Z = new Cercle(Couleur.GRIS_CLAIR, new Point(930, 180), 30, true);
+    f.ajouter(bouton2Z);
+    f.ajouter(new Ligne(Couleur.NOIR, new Point(500, 0), new Point(500, 260)));
+    while (true) {
+        try {
+            Thread.sleep(1);
+        } catch (Exception e) {
+        }
+        if (clavier.getJoyJ1HautEnfoncee())
+            joy1Haut.setCouleur(Couleur.GRIS_FONCE);
+        else
+            joy1Haut.setCouleur(Couleur.GRIS_CLAIR);
+        if (clavier.getJoyJ1BasEnfoncee())
+            joy1Bas.setCouleur(Couleur.GRIS_FONCE);
+        else
+            joy1Bas.setCouleur(Couleur.GRIS_CLAIR);
+        if (clavier.getJoyJ1GaucheEnfoncee())
+            joy1Gauche.setCouleur(Couleur.GRIS_FONCE);
+        else
+            joy1Gauche.setCouleur(Couleur.GRIS_CLAIR);
+        if (clavier.getJoyJ1DroiteEnfoncee())
+            joy1Droite.setCouleur(Couleur.GRIS_FONCE);
+        else
+            joy1Droite.setCouleur(Couleur.GRIS_CLAIR);
+        if (clavier.getBoutonJ1AEnfoncee())
+            bouton1A.setCouleur(Couleur.GRIS_FONCE);
+        else
+            bouton1A.setCouleur(Couleur.GRIS_CLAIR);
+        if (clavier.getBoutonJ1BEnfoncee())
+            bouton1B.setCouleur(Couleur.GRIS_FONCE);
+        else
+            bouton1B.setCouleur(Couleur.GRIS_CLAIR);
+        if (clavier.getBoutonJ1CEnfoncee())
+            bouton1C.setCouleur(Couleur.GRIS_FONCE);
+        else
+            bouton1C.setCouleur(Couleur.GRIS_CLAIR);
+        if (clavier.getBoutonJ1XEnfoncee())
+            bouton1X.setCouleur(Couleur.GRIS_FONCE);
+        else
+            bouton1X.setCouleur(Couleur.GRIS_CLAIR);
+        if (clavier.getBoutonJ1YEnfoncee())
+            bouton1Y.setCouleur(Couleur.GRIS_FONCE);
+        else
+            bouton1Y.setCouleur(Couleur.GRIS_CLAIR);
+        if (clavier.getBoutonJ1ZEnfoncee())
+            bouton1Z.setCouleur(Couleur.GRIS_FONCE);
+        else
+            bouton1Z.setCouleur(Couleur.GRIS_CLAIR);
+        if (clavier.getJoyJ2HautEnfoncee())
+            joy2Haut.setCouleur(Couleur.GRIS_FONCE);
+        else
+            joy2Haut.setCouleur(Couleur.GRIS_CLAIR);
+        if (clavier.getJoyJ2BasEnfoncee())
+            joy2Bas.setCouleur(Couleur.GRIS_FONCE);
+        else
+            joy2Bas.setCouleur(Couleur.GRIS_CLAIR);
+        if (clavier.getJoyJ2GaucheEnfoncee())
+            joy2Gauche.setCouleur(Couleur.GRIS_FONCE);
+        else
+            joy2Gauche.setCouleur(Couleur.GRIS_CLAIR);
+        if (clavier.getJoyJ2DroiteEnfoncee())
+            joy2Droite.setCouleur(Couleur.GRIS_FONCE);
+        else
+            joy2Droite.setCouleur(Couleur.GRIS_CLAIR);
+        if (clavier.getBoutonJ2AEnfoncee())
+            bouton2A.setCouleur(Couleur.GRIS_FONCE);
+        else
+            bouton2A.setCouleur(Couleur.GRIS_CLAIR);
+        if (clavier.getBoutonJ2BEnfoncee())
+            bouton2B.setCouleur(Couleur.GRIS_FONCE);
+        else
+            bouton2B.setCouleur(Couleur.GRIS_CLAIR);
+        if (clavier.getBoutonJ2CEnfoncee())
+            bouton2C.setCouleur(Couleur.GRIS_FONCE);
+        else
+            bouton2C.setCouleur(Couleur.GRIS_CLAIR);
+        if (clavier.getBoutonJ2XEnfoncee())
+            bouton2X.setCouleur(Couleur.GRIS_FONCE);
+        else
+            bouton2X.setCouleur(Couleur.GRIS_CLAIR);
+        if (clavier.getBoutonJ2YEnfoncee())
+            bouton2Y.setCouleur(Couleur.GRIS_FONCE);
+        else
+            bouton2Y.setCouleur(Couleur.GRIS_CLAIR);
+        if (clavier.getBoutonJ2ZEnfoncee())
+            bouton2Z.setCouleur(Couleur.GRIS_FONCE);
+        else
+            bouton2Z.setCouleur(Couleur.GRIS_CLAIR);
+        f.rafraichir();
+    }
+}
+
+===== Fichier : TestHighScore.java =====
+
+---- Méthode : main ----
+Signature : void main(String[])
+Contenu :
+public static void main(String[] args) {
+    Fenetre f = new Fenetre("test", 1280, 1024);
+    ClavierBorneArcade clavier = new ClavierBorneArcade();
+    f.addKeyListener(clavier);
+    HighScore.demanderEnregistrerNom(f, clavier, new Texture("img/shoot.png", new Point(0, 0)), 40000, "./fichierTestHighScore/text5.hig");
+}
+
+===== Fichier : ExportMethods.java =====
+
+---- Méthode : main ----
+Signature : void main(String[])
+Contenu :
+public static void main(String[] args) {
+    // Le dossier contenant les fichiers .java
+    // à adapter si besoin
+    String folderPath = "../borne_arcade";
+    Path dir = Paths.get(folderPath);
+    // Fichier de sortie
+    File outputFile = new File("methods.txt");
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
+        // Parcours des fichiers .java dans le dossier (pas les sous-dossiers)
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.java")) {
+            for (Path path : stream) {
+                CompilationUnit cu;
+                try {
+                    cu = StaticJavaParser.parse(path);
+                } catch (Exception e) {
+                    System.out.println("Erreur en parsant : " + path.getFileName());
+                    e.printStackTrace();
+                    continue;
+                }
+                writer.write("===== Fichier : " + path.getFileName() + " =====\n\n");
+                // Parcours des méthodes
+                for (MethodDeclaration method : cu.findAll(MethodDeclaration.class)) {
+                    writer.write("---- Méthode : " + method.getName() + " ----\n");
+                    writer.write("Signature : " + method.getDeclarationAsString(false, false, false) + "\n");
+                    writer.write("Contenu :\n");
+                    // inclut signature + body
+                    writer.write(method.toString());
+                    writer.write("\n\n");
+                }
+            }
+        }
+        System.out.println("Extraction terminée ! Vérifie le fichier methods.txt");
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
