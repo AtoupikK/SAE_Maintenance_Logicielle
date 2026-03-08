@@ -445,7 +445,7 @@ public class BoiteDescription extends Boite {
       }
     */
 
-    public void testFonctionDoc() {
+    public void TestFonctioNDocumentation() {
         System.out.print("Test");
     }
 }

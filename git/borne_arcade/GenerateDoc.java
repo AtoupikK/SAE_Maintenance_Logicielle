@@ -47,9 +47,9 @@ public class GenerateDoc {
                 try {
 
                     // Ignore les méthodes déjà documentées
-                    if (method.getJavadoc().isPresent()) {
-                        return;
-                    }
+                    //if (method.getJavadoc().isPresent()) {
+                    //    return;
+                    //}
 
                     String code = method.toString();
 
