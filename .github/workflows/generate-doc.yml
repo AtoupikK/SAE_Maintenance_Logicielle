@@ -39,23 +39,25 @@ jobs:
     - name: Pull model
       run: ollama pull deepseek-coder:6.7b
 
-
-    - name: Get modified Java file
-      id: java-files
+    - name: Get modified Java files
+      id: modified-files
       run: |
+        # Récupère les fichiers modifiés dans le push
         FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} \
           | grep "^git/borne_arcade/[^/]*\.java$" || true)
         echo "Fichiers modifiés : $FILES"
-        echo "files=$FILES" >> $GITHUB_OUTPUT
+        FILES_COMMA=$(echo "$FILES" | paste -sd "," -)
+        echo "files=$FILES_COMMA" >> $GITHUB_OUTPUT
 
-    - name: Compile project
-      if: steps.java-files.outputs.files != ''
+    - name: Compile and run doc generator
+      if: steps.modified-files.outputs.files != ''
       working-directory: git/borne_arcade
       run: |
-        for f in ${{ steps.java-files.outputs.files }}; do
+        IFS=',' read -ra FILE_ARRAY <<< "${{ steps.modified-files.outputs.files }}"
+        for f in "${FILE_ARRAY[@]}"; do
           echo "Processing $f"
           javac -cp "libs/javaparser-core-3.25.10.jar:." "$(basename $f)"
-          java -cp "libs/javaparser-core-3.25.10.jar:." GenerateDoc "$(basename $f)"
+          java -cp "libs/javaparser-core-3.25.10.jar:." GenerateDoc "$f"
         done
 
     - name: Commit changes
