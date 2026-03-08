@@ -188,12 +188,12 @@ public class BoiteDescription extends Boite {
      *
      *  @throws IOException si le fichier n'existe pas ou s'il y a un problème lors de sa lecture.
      * /
-     * public void lireHighScore(String path) throws IOException {
+     * public void readHighScore(String path) throws IOException {
      *     for (int i = 0; i \u003c 10; i++) {
      *         if (i == 0)
      *             listeHighScore[i].setTexte(\
      */
-    public void lireHighScore(String path) {
+    public void readHighScore(String path) {
         for (int i = 0; i < 10; i++) {
             if (i == 0)
                 listeHighScore[i].setTexte("1er - ");

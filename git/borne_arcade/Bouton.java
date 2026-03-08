@@ -85,8 +85,7 @@ public class Bouton {
      * }
      * ```
      *
-     * Dans cette documentation, on décrit la fonction `getChemin()` qui renvoie le chemin de l'objet. JavaDoc indique que la méthode retourne une chaîne de caractères (String), ce qui est spécifié par le tag `@return`. La description complète de la méthode se trouve entre les commentaires de bloc JavaDoc (`/**` et `*/`).
-     */
+Z     */
     public String getChemin() {
         return chemin;
     }
