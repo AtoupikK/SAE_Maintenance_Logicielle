@@ -4,6 +4,8 @@ import MG2D.geometrie.*;
 class TestHighScore {
 
     /**
+     * Voici la documentation JavaDoc de la méthode `demanderEnregistrerNom` :
+     *
      * ```java
      * /**
      *  Demande à l'utilisateur de s'enregistrer pour un high score.
@@ -17,6 +19,15 @@ class TestHighScore {
      * public static void demanderEnregistrerNom(Fenetre fenetre, ClavierBorneArcade clavier, Texture imageDuJoueur, int tempsPourFinir, String cheminFichierHighScore) {
      *     // votre code ici
      * }
+     * ```
+     *
+     * Cependant, cela n'est pas très utile car la méthode n'est pas définie. Cependant, si cette méthode avait une implémentation et qu'elle renvoyait quelque chose, vous pourriez ajouter une description du @return dans la documentation. Par exemple, si cette méthode retourne un `HighScore`, vous pouriez ajouter :
+     *
+     * ```java
+     * /**
+     *  ...
+     *  @return Le nouveau high score enregistré par l'utilisateur
+     * /
      * ```
      */
     public static void main(String[] args) {

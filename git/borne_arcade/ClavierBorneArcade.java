@@ -117,19 +117,43 @@ public class ClavierBorneArcade implements KeyListener {
     // Accesseurs //
     // Getter //
     /**
-     * Voici la documentation JavaDoc pour la méthode `getJoyJ1GaucheEnfoncee`:
+     * La documentation JavaDoc pour la méthode `getJoyJ1GaucheEnfoncee` est la suivante :
      *
      * ```java
      * /**
-     *  Obtient la valeur booléenne qui indique si la touche \
+     *  Obtient la valeur booléenne qui indique si la touche de gauche est enfoncée ou non.
+     *
+     *  @return {@code true} si la touche de gauche est enfoncée, {@code false} sinon.
+     * /
+     * public boolean getJoyJ1GaucheEnfoncee() {
+     *     return gauche;
+     * }
+     * ```
+     *
+     * Dans cette documentation, j'ai défini les paramètres et le retour de la méthode `getJoyJ1GaucheEnfoncee`. Le paramètre n'est pas précisé car la méthode ne prend pas d'arguments et le retour est explicite avec la description de la valeur booléenne retournée par la méthode.
      */
     public boolean getJoyJ1GaucheEnfoncee() {
         return gauche;
     }
 
     /**
+     * La fonction `getJoyJ1GaucheTape()` est une méthode d'accès en lecture pour une variable d'instance `gaucheTape`. Cette méthode est utilisée pour vérifier si la touche de gauche a été tapée ou non et ensuite réinitialiser le statut de la touche.
+     *
+     * ```java
      * /**
-     *  Permet de savoir si la touche \
+     *  Permet de savoir si la touche de gauche a été tapée.
+     *  Après la lecture, le statut de la touche est réinitialisé à `false`.
+     *
+     *  @return `true` si la touche de gauche a été tapée, `false` sinon.
+     * /
+     * public boolean getJoyJ1GaucheTape() {
+     *     boolean aRetourner = gaucheTape;
+     *     gaucheTape = false;
+     *     return aRetourner;
+     * }
+     * ```
+     *
+     * Dans cette documentation JavaDoc, le paramètre n'est pas spécifié car la méthode n'a pas besoin d'un paramètre. Elle n'affiche pas également de @throws car la méthode n'est pas susceptible d'évoluer par rapport à des exceptions potentielles.
      */
     public boolean getJoyJ1GaucheTape() {
         boolean aRetourner = gaucheTape;
@@ -138,22 +162,29 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
-     * La fonction `getJoyJ1DroiteEnfoncee()` semble déjà avoir une documentation JavaDoc, mais elle est très basique. Voici une version plus complète avec des `@param` et `@return` :
+     * Voici une version plus complète avec des `@param` et `@return` pour la fonction `getJoyJ1DroiteEnfoncee()` :
      *
      * ```java
      * /**
-     *  Obtient la valeur booléenne de la touche \
+     *  Obtient la valeur booléenne de la touche joystick J1 située à droite.
+     *
+     *  @return {boolean} - true si la touche est enfoncée (haut), false sinon.
+     * /
+     * public boolean getJoyJ1DroiteEnfoncee() {
+     *     return droite;
+     * }
+     * ```
+     *
+     * Cette documentation décrit la fonction `getJoyJ1DroiteEnfoncee()` qui permet de connaitre l'état de la touche située à droite sur le joystick J1. La fonction ne prend pas de paramètres et renvoie un booléen : `true` si la touche est enfoncée (haut) et `false` sinon.
      */
     public boolean getJoyJ1DroiteEnfoncee() {
         return droite;
     }
 
     /**
-     * Voici la documentation JavaDoc pour la méthode indiquée :
-     *
      * ```java
      * /**
-     *  Permet de savoir si la touche \
+     *  Retourne la valeur de l'attribut \
      */
     public boolean getJoyJ1DroiteTape() {
         boolean aRetourner = droiteTape;
@@ -162,24 +193,35 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
-     * Vous avei déjà une très bonne documentation JavaDoc. Cependant, pour la fonction `getJoyJ1HautEnfoncee()`, vous n'avez pas mentionné les paramètres attendus et la valeur de retour n'est pas expliquée.
-     *
-     * Voici la documentation améliorée:
-     *
      * ```java
      * /**
-     *  Permet de savoir si la touche \
+     *  Cette méthode permet de déterminer si la touche haut est enfoncée ou non.
+     *
+     *  @return true si la touche haut est enfoncée, false sinon
+     * /
+     * public boolean getJoyJ1HautEnfoncee() {
+     *     return haut;
+     * }
+     * ```
      */
     public boolean getJoyJ1HautEnfoncee() {
         return haut;
     }
 
     /**
-     * Voici la documentation JavaDoc pour votre méthode `getJoyJ1HautTape()` :
-     *
      * ```java
      * /**
-     *  Vérifie si la touche \
+     *  Cette méthode permet de vérifier si la touche haute a été enfoncée.
+     *  Une fois que la touche est vérifiée, la variable `hautTape` est réinitialisée à `false`.
+     *
+     *  @return `true` si la touche haute a été enfoncée, `false` sinon
+     * /
+     * public boolean getJoyJ1HautTape() {
+     *     boolean aRetourner = hautTape;
+     *     hautTape = false;
+     *     return aRetourner;
+     * }
+     * ```
      */
     public boolean getJoyJ1HautTape() {
         boolean aRetourner = hautTape;
@@ -188,7 +230,7 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
-     * La documentation JavaDoc est une spécification de la syntaxe JavaDoc utilisée pour documenter le code source de manière uniforme. Dans votre cas, la documentation est assez claire, mais pour plus de détail, voici la documentation à la demande de la fonction :
+     * La documentation JavaDoc pour la méthode `getJoyJ1BasEnfoncee` est la suivante :
      *
      * ```java
      * /**
@@ -200,7 +242,15 @@ public class ClavierBorneArcade implements KeyListener {
 
     /**
      * /**
-     *  Permet de savoir si la touche \
+     *  Cette méthode permet de savoir si la touche J1 du joystick est en bas.
+     *
+     *  @return boolean - Retourne true si la touche J1 du joystick est en bas, sinon retourne false.
+     * /
+     * public boolean getJoyJ1BasTape() {
+     *     boolean aRetourner = basTape;
+     *     basTape = false;
+     *     return aRetourner;
+     * }
      */
     public boolean getJoyJ1BasTape() {
         boolean aRetourner = basTape;
@@ -209,11 +259,22 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
-     * La documentation JavaDoc pour votre fonction `getBoutonJ2XEnfoncee()` est la suivante :
+     * Votre documentation JavaDoc est correctement écrite.
+     *
+     * Mais vous avez oublié d'inclure les tags `@param` et `@return`. C'est donc la documentation qui devrait être écrite :
      *
      * ```java
      * /**
-     *  Permet de savoir si la touche \
+     *  Cette méthode permet de savoir si la touche est enfoncée ou non.
+     *
+     *  @return boolean - true si la touche est enfoncée, false sinon
+     * /
+     * public boolean getBoutonJ2XEnfoncee() {
+     *     return a;
+     * }
+     * ```
+     *
+     * Notez que `a` est une variable locale ou une variable d'instance de la classe, elle ne sert pas à dire si le bouton est enfoncé ou non, vous aurez besoin d'une variable globale ou d'une variable d'instance qui indique si le bouton est enfoncé ou non pour que cette méthode fonctionne correctement.
      */
     public boolean getBoutonJ2XEnfoncee() {
         return a;
@@ -224,7 +285,20 @@ public class ClavierBorneArcade implements KeyListener {
      *
      * ```java
      * /**
-     *  Permet de savoir si la touche \
+     *  Cette méthode est utilisée pour savoir si la touche est appuyée.
+     *  Elle renvoie true si la touche est appuyée, et false sinon.
+     *  Après avoir lu la valeur de la touche, la valeur de la touche est réinitialisée à false.
+     *
+     *  @return true si la touche est appuyée, false sinon
+     * /
+     * public boolean getBoutonJ2XTape() {
+     *     boolean aRetourner = aTape;
+     *     aTape = false;
+     *     return aRetourner;
+     * }
+     * ```
+     *
+     * Dans cette documentation, il est mentionné que la méthode renvoie un boolean (`@return`). Cependant, sans plus de contexte sur la classe ou le contexte de cette méthode, il est impossible de mentionner des paramètres (`@param`) spécifiques.
      */
     public boolean getBoutonJ2XTape() {
         boolean aRetourner = aTape;
@@ -233,21 +307,42 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
-     * La documentation JavaDoc que vous avez fournie est correctement écrite pour la fonction que vous avez fournie. Cependant, il manque le @param pour indiquer que la fonction attend une entrée et le @return pour indiquer le type de valeur que la fonction renvoie.
-     *
-     * Voici une version plus complète de votre documentation :
+     * Voici la documentation complète avec @param et @return :
      *
      * ```java
      * /**
-     *  Permet de savoir si la touche \
+     *  Cette méthode est utilisée pour déterminer si la touche J2Y est enfoncée.
+     *
+     *  @return true si la touche J2Y est enfoncée, sinon false.
+     * /
+     * public boolean getBoutonJ2YEnfoncee() {
+     *     return z;
+     * }
+     * ```
+     *
+     * Cela indique que la méthode `getBoutonJ2YEnfoncee` n'accepte pas d'arguments et renvoie un booléen (true ou false).
      */
     public boolean getBoutonJ2YEnfoncee() {
         return z;
     }
 
     /**
+     * Voici la documentation JavaDoc pour la méthode `getBoutonJ2YTape()` :
+     *
+     * ```java
      * /**
-     *  Permet de savoir si la touche \
+     *  Permet de savoir si la touche est enfoncée ou non.
+     *
+     *  @return true si la touche est enfoncée, sinon false. Après avoir consulté la valeur, zTape est réinitialisée à false.
+     * /
+     * public boolean getBoutonJ2YTape() {
+     *     boolean aRetourner = zTape;
+     *     zTape = false;
+     *     return aRetourner;
+     * }
+     * ```
+     *
+     * Notez que la documentation JavaDoc n'a pas besoin de spécifier le type de retour et les paramètres, car ils sont déjà documentés dans le code source de la méthode. Cependant, pour une meilleure compréhension du code, il peut être utile de documenter explicitement le type de retour et les paramètres, comme c'est fait dans la documentation ci-dessus.
      */
     public boolean getBoutonJ2YTape() {
         boolean aRetourner = zTape;
@@ -256,11 +351,20 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
-     * La documentation JavaDoc pour la fonction getBoutonJ2ZEnfoncee() est la suivante :
+     * Voici la documentation JavaDoc complète pour la fonction `getBoutonJ2ZEnfoncee()` :
      *
      * ```java
      * /**
-     *  Permet de savoir si la touche \
+     *  Récupère l'état actuel du bouton J2Z.
+     *
+     *  @return true si le bouton est enfoncé, sinon false.
+     * /
+     * public boolean getBoutonJ2ZEnfoncee() {
+     *     return e;
+     * }
+     * ```
+     *
+     * Dans cette documentation, le `@return` spécifie que la fonction renvoie une valeur de type booléenne.
      */
     public boolean getBoutonJ2ZEnfoncee() {
         return e;
@@ -271,7 +375,16 @@ public class ClavierBorneArcade implements KeyListener {
      *
      * ```java
      * /**
-     *  Permet de vérifier si la touche \
+     *  Cette méthode vérifie si la touche a été tapée.
+     *
+     *  @return true si la touche a été tapée, false sinon
+     * /
+     * public boolean getBoutonJ2ZTape() {
+     *     boolean aRetourner = eTape;
+     *     eTape = false;
+     *     return aRetourner;
+     * }
+     * ```
      */
     public boolean getBoutonJ2ZTape() {
         boolean aRetourner = eTape;
@@ -280,18 +393,39 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
-     * La documentation JavaDoc pour la fonction donnée est la suivante:
+     * Voici la documentation JavaDoc complète pour la méthode `getBoutonJ2AEnfoncee()`:
      *
      * ```java
      * /**
-     *  Récupère l'état de la touche \
+     *  Récupère l'état de la touche.
+     *
+     *  @return true si la touche est enfoncée, false sinon
+     * /
+     * public boolean getBoutonJ2AEnfoncee() {
+     *     return q;
+     * }
+     * ```
+     *
+     * Cette documentation décrit la fonction de manière claire et précise. Elle explique que la fonction renvoie un booléen qui indique l'état de la touche. Dans cet exemple, il est précisé que si la touche est enfoncée, la fonction renvoie true, sinon elle renvoie false.
      */
     public boolean getBoutonJ2AEnfoncee() {
         return q;
     }
 
     /**
-     * La fonction `getBoutonJ2ATape` est une méthode Java qui vérifie si la touche \
+     * ```java
+     * /**
+     *  La méthode `getBoutonJ2ATape` est une méthode Java qui vérifie si la touche est enfoncée (true) ou non (false).
+     *  Après avoir appelée cette méthode, la valeur de `qTape` est réinitialisée à false.
+     *
+     *  @return Retourne la valeur actuelle de `qTape`.
+     * /
+     * public boolean getBoutonJ2ATape() {
+     *     boolean aRetourner = qTape;
+     *     qTape = false;
+     *     return aRetourner;
+     * }
+     * ```
      */
     public boolean getBoutonJ2ATape() {
         boolean aRetourner = qTape;
@@ -300,22 +434,49 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
-     * Votre fonction JavaDoc est assez propre, mais pour une meilleure compréhension, je vous laisse ajouter les balises @param et @return.
+     * La fonction `getBoutonJ2BEnfoncee()` semble être une méthode de classe Java, elle semble être destinée à renvoyer une valeur booléenne (`true` ou `false`) indiquant si le bouton J2B est enfoncé ou non.
+     *
+     * Voici une documentation JavaDoc complète avec des balises `@param` et `@return` :
      *
      * ```java
      * /**
-     *  Cette méthode est utilisée pour vérifier si la touche \
+     *  Cette méthode est utilisée pour vérifier si le bouton J2B est enfoncé ou non.
+     *
+     *  @return Un booléen indiquant si le bouton J2B est enfoncé (`true`) ou non (`false`).
+     * /
+     * public boolean getBoutonJ2BEnfoncee() {
+     *     return s;
+     * }
+     * ```
+     *
+     * Cette documentation décrit la fonction de manière claire et compréhensible, expliquant son rôle et ses résultats.
      */
     public boolean getBoutonJ2BEnfoncee() {
         return s;
     }
 
     /**
-     * La documentation JavaDoc pour la fonction `getBoutonJ2BTape` est la suivante:
+     * Voici la documentation JavaDoc pour la méthode `getBoutonJ2BTape`:
      *
      * ```java
      * /**
-     *  Permet de savoir si la touche \
+     *  Retourne la valeur de l'attribut sTape et la réinitialise à false.
+     *
+     *  @return la valeur actuelle de sTape
+     *  @see #sTape
+     * /
+     * public boolean getBoutonJ2BTape() {
+     *     boolean aRetourner = sTape;
+     *     sTape = false;
+     *     return aRetourner;
+     * }
+     * ```
+     *
+     * Dans cette documentation, on décrit deux choses:
+     *
+     * 1. La fonction permet de savoir la valeur actuelle de l'attribut `sTape` et de le réinitialiser à false. Elle retourne cette valeur.
+     *
+     * 2. Le `@return` tag est utilisé pour indiquer la valeur renvoyée par la méthode. Ici, c'est la valeur actuelle de `sTape`.
      */
     public boolean getBoutonJ2BTape() {
         boolean aRetourner = sTape;
@@ -324,18 +485,38 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
-     * Votre documentation JavaDoc semble correctement décrire la fonction. Elle indique que la fonction permet de savoir si la touche \
+     * Votre documentation JavaDoc semble correctement décrire la fonction. Elle indique que la fonction permet de savoir si la touche est enfoncée.
+     *
+     * ```java
+     * /**
+     *  Cette méthode permet de déterminer si le bouton J2C est enfoncé ou non.
+     *
+     *  @return Un booléen qui indique si le bouton J2C est enfoncé (true) ou non (false).
+     * /
+     * public boolean getBoutonJ2CEnfoncee() {
+     *     return d;
+     * }
+     * ```
+     *
+     * Dans cette documentation, on précise que c'est une méthode publique qui retourne un booléen. On explique que le booléen indique si le bouton J2C est enfoncé ou non.
      */
     public boolean getBoutonJ2CEnfoncee() {
         return d;
     }
 
     /**
-     * C'est déjà beaucoup, mais voici une version plus détaillée, avec un `@param` pour `dTape` et un `@return` pour `getBoutonJ2CTape()` :
-     *
      * ```java
      * /**
-     *  Retourne la valeur de la touche \
+     *  Cette méthode est utilisée pour récupérer la valeur de la touche 'dTape' et ensuite la réinitialiser à 'false'.
+     *
+     *  @return boolean - Retourne la valeur actuelle de 'dTape'. Une fois que cette valeur a été récupérée, elle est automatiquement réinitialisée à 'false'.
+     * /
+     * public boolean getBoutonJ2CTape() {
+     *     boolean aRetourner = dTape;
+     *     dTape = false;
+     *     return aRetourner;
+     * }
+     * ```
      */
     public boolean getBoutonJ2CTape() {
         boolean aRetourner = dTape;
@@ -348,14 +529,34 @@ public class ClavierBorneArcade implements KeyListener {
      *
      * ```java
      * /**
-     *  Retourne la valeur booleanéenne de la touche \
+     *  Retourne la valeur booleanéenne de la touche Joystick J2 Gauche enfantée.
+     *
+     *  @return {boolean} La valeur booleanéenne de la touche Joystick J2 Gauche enfantée.
+     * /
+     * public boolean getJoyJ2GaucheEnfoncee() {
+     *     return k;
+     * }
+     * ```
+     *
+     * Dans cette documentation, on décrit la fonction `getJoyJ2GaucheEnfoncee` qui retourne une valeur booléenne (`boolean`). La fonction ne prend pas de paramètres en entrée (`@param`) et renvoie une valeur booléenne (`@return`).
      */
     public boolean getJoyJ2GaucheEnfoncee() {
         return k;
     }
 
     /**
-     * La fonction `getJoyJ2GaucheTape` est censée vérifier si la touche \
+     * ```java
+     * /**
+     *  Cette méthode `getJoyJ2GaucheTape` est utilisée pour vérifier si la touche est enfoncée.
+     *
+     *  @return Retourne un booléen qui indique si la touche est enfoncée ou non.
+     * /
+     * public boolean getJoyJ2GaucheTape() {
+     *     boolean aRetourner = kTape;
+     *     kTape = false;
+     *     return aRetourner;
+     * }
+     * ```
      */
     public boolean getJoyJ2GaucheTape() {
         boolean aRetourner = kTape;
@@ -364,15 +565,34 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
-     * La fonction que vous avez fournie est une méthode getter pour une variable booléenne \
+     * La documentation JavaDoc pour votre fonction serait la suivante :
+     *
+     * ```java
+     * /**
+     *  Retourne la valeur actuelle de la variable booléenne \
      */
     public boolean getJoyJ2BasEnfoncee() {
         return l;
     }
 
     /**
+     * Voici la documentation JavaDoc pour la méthode que vous avez fournie :
+     *
+     * ```java
      * /**
-     *  Récupère la valeur du booléen correspondant à la touche \
+     *  Récupère la valeur du booléen correspondant à la touche.
+     *  Cette méthode retourne la valeur actuelle de la variable lTape et la met à false à la fin.
+     *
+     *  @return la valeur actuelle de la variable lTape
+     * /
+     * public boolean getJoyJ2BasTape() {
+     *     boolean aRetourner = lTape;
+     *     lTape = false;
+     *     return aRetourner;
+     * }
+     * ```
+     *
+     * Comme vous l'avez vu, je n'ai pas mis de `@param` car la méthode ne prend pas de paramètre. Cependant, pour une meilleure compréhension, vous pouvez éventuellement mettre `@param` lorsque la méthode prendrait des paramètres.
      */
     public boolean getJoyJ2BasTape() {
         boolean aRetourner = lTape;
@@ -381,11 +601,18 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
-     * Voici la documentation JavaDoc pour la méthode `getJoyJ2DroiteTape` :
-     *
      * ```java
      * /**
-     *  Permet de vérifier si la touche \
+     *  Récupère l'état de la touche droite de la joystick.
+     *
+     *  @return true si la touche droite est enfoncée, sinon false.
+     * /
+     * public boolean getJoyJ2DroiteTape() {
+     *     boolean aRetourner = mTape;
+     *     mTape = false;
+     *     return aRetourner;
+     * }
+     * ```
      */
     public boolean getJoyJ2DroiteTape() {
         boolean aRetourner = mTape;
@@ -394,21 +621,56 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
-     * Votre documentation JavaDoc semble correctement documenter la fonction `getJoyJ2DroiteEnfoncee()` qui semble indiquer qu'elle permet de savoir si la touche \
+     * Bien sûr, voici la documentation JavaDoc pour votre fonction `getJoyJ2DroiteEnfoncee()` :
+     *
+     * ```java
+     * /**
+     *  Cette méthode est utilisée pour déterminer si la touche de la joystick 2D, située à droite, est enfoncée ou non.
+     *
+     *  @return Un booléen indiquant si la touche de la joystick 2D, située à droite, est enfoncée (true) ou non (false).
+     * /
+     * public boolean getJoyJ2DroiteEnfoncee() {
+     *     return m;
+     * }
+     * ```
+     *
+     * Cette documentation précise le rôle de la méthode `getJoyJ2DroiteEnfoncee()`, ce qu'elle fait et comment elle est utilisée. L'utilisateur s'attend à ce que cette méthode retourne un booléen (true ou false) indiquant l'état de la touche de la joystick 2D située à droite (enfoncée ou non).
      */
     public boolean getJoyJ2DroiteEnfoncee() {
         return m;
     }
 
     /**
-     * La fonction ci-dessus est une méthode Java qui retourne une valeur booléenne (`true` ou `false`) qui indique si la touche \
+     * /**
+     *  Cette méthode est une méthode Java qui retourne une valeur booléenne (`true` ou `false`) indiquant si la touche est maintenue enfoncée ou non.
+     *
+     *  @return booléen (`true` si la touche est enfoncée, `false` sinon)
+     * /
+     * public boolean getJoyJ2HautEnfoncee() {
+     *     return o;
+     * }
      */
     public boolean getJoyJ2HautEnfoncee() {
         return o;
     }
 
     /**
-     * Cette fonction est une méthode Java pour vérifier si la touche \
+     * Voici la documentation JavaDoc pour la méthode `getJoyJ2HautTape` :
+     *
+     * ```java
+     * /**
+     *  Cette méthode est une fonction Java pour vérifier si la touche est enfoncée.
+     *
+     *  @return Retourne un booléen indiquant si la touche est enfoncée (`true`) ou non (`false`).
+     * /
+     * public boolean getJoyJ2HautTape() {
+     *     boolean aRetourner = oTape;
+     *     oTape = false;
+     *     return aRetourner;
+     * }
+     * ```
+     *
+     * Dans cette documentation, on décrit la fonction en utilisant des phrases courtes et claires. Le `@return` est spécifié pour indiquer le type et la signification du résultat de la fonction. Dans notre cas, on indique que la fonction renvoie un booléen indiquant si la touche est enfoncée ou non.
      */
     public boolean getJoyJ2HautTape() {
         boolean aRetourner = oTape;
@@ -417,9 +679,22 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
+     * La documentation JavaDoc pour la fonction `getBoutonJ1ATape` ressemblerait à ceci :
+     *
      * ```java
      * /**
-     *  Permet de savoir si la touche \
+     *  Permet de savoir si le bouton J1 a été touché.
+     *
+     *  @return `true` si le bouton J1 a été touché, `false` sinon. Après la lecture, la valeur est remise à `false`.
+     * /
+     * public boolean getBoutonJ1ATape() {
+     *     boolean aRetourner = fTape;
+     *     fTape = false;
+     *     return aRetourner;
+     * }
+     * ```
+     *
+     * Dans cette documentation, nous décrivons ce que la méthode fait en résumé, ses paramètres et son résultat. Nous expliquons également comment elle fonctionne en précisant que le champ `fTape` est utilisé pour stocker l'état de l'appui sur le bouton J1. Cela permet d'avoir une trace de l'état précédent, mais que l'état actuel est remis à `false` immédiatement après la lecture.
      */
     public boolean getBoutonJ1ATape() {
         boolean aRetourner = fTape;
@@ -428,22 +703,42 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
-     * La documentation JavaDoc pour cette fonction est la suivante :
-     *
      * ```java
      * /**
-     *  Récupère l'état de la touche \
+     *  La documentation JavaDoc pour cette méthode est la suivante:
+     *
+     *  ```java
+     *   /**
+     *    Récupère l'état de la touche J1A \
+     *
+     *    @return true si la touche J1A est enfoncée, false sinon
+     *   */
+     * public boolean getBoutonJ1AEnfoncee() {
+     *     return f;
+     * }
+     * ```
      */
     public boolean getBoutonJ1AEnfoncee() {
         return f;
     }
 
     /**
-     * Voici la documentation JavaDoc pour la méthode `getBoutonJ1BTape` :
+     * La documentation JavaDoc pour la méthode `getBoutonJ1BTape` ressemblerait à ceci :
      *
      * ```java
      * /**
-     *  Permet de savoir si la touche \
+     *  Retourne et réinitialise le statut de la touche.
+     *
+     *  @return true si la touche a été pressée, false sinon
+     * /
+     * public boolean getBoutonJ1BTape() {
+     *     boolean aRetourner = gTape;
+     *     gTape = false;
+     *     return aRetourner;
+     * }
+     * ```
+     *
+     * Dans cette documentation, `@return` est utilisé pour indiquer ce que la méthode renvoie. Ici, elle renvoie `true` si la touche a été pressée (`gTape` était `true`) et `false` sinon.
      */
     public boolean getBoutonJ1BTape() {
         boolean aRetourner = gTape;
@@ -452,22 +747,37 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
-     * La documentation JavaDoc pour la méthode `getBoutonJ1BEnfoncee()` est la suivante :
-     *
-     * ```java
      * /**
-     *  Permet de savoir si la touche \
+     *  Obtient la valeur de la touche j1b enfoncée.
+     *
+     *  @return true si la touche j1b est enfoncée, false sinon
+     * /
+     * public boolean getBoutonJ1BEnfoncee() {
+     *     return g;
+     * }
      */
     public boolean getBoutonJ1BEnfoncee() {
         return g;
     }
 
     /**
-     * Voici la documentation JavaDoc pour la méthode `getBoutonJ1CTape()` :
+     * La documentation JavaDoc pour la méthode `getBoutonJ1CTape()` est la suivante :
      *
      * ```java
      * /**
-     *  Permet de vérifier si la touche \
+     *  Cette méthode permet de vérifier si la touche a été tapée ou non.
+     *  Une fois que la touche a été vérifiée, le statut de la touche (hTape) est réinitialisé à false.
+     *
+     *  @return boolean - true si la touche a été tapée, false sinon
+     * /
+     * public boolean getBoutonJ1CTape() {
+     *     boolean aRetourner = hTape;
+     *     hTape = false;
+     *     return aRetourner;
+     * }
+     * ```
+     *
+     * Cette documentation décrit clairement le rôle de la méthode et comment elle est utilisée. Le `@return` indique que la méthode renvoie un booléen qui est true si la touche a été tapée et false sinon.
      */
     public boolean getBoutonJ1CTape() {
         boolean aRetourner = hTape;
@@ -476,19 +786,53 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
+     * Voici la documentation JavaDoc pour la méthode que vous avez fournie :
+     *
+     * ```java
      * /**
-     *  Cette méthode permet de savoir si la touche \
+     *  Cette méthode permet de savoir si le bouton du joueur 1 est enfoncé ou non.
+     *
+     *  @return Retourne un booléen indiquant si le bouton est enfoncé ou non.
+     * /
+     * public boolean getBoutonJ1CEnfoncee() {
+     *     return h;
+     * }
+     * ```
+     *
+     * Notez que cela suppose que la variable `h` est définie et est de type `boolean`, c'est-à-dire, elle vaut soit `true`, soit `false`. Cela décrit le paramètre de sortie de la méthode. Si cela n'est pas le cas, vous devriez le spécifier explicitement dans la documentation.
      */
     public boolean getBoutonJ1CEnfoncee() {
         return h;
     }
 
     /**
-     * La documentation JavaDoc pour la fonction est la suivante :
+     * Voici la documentation JavaDoc pour votre fonction :
      *
      * ```java
      * /**
-     *  Permet de savoir si la touche \
+     *  La documentation JavaDoc pour la fonction est la suivante :
+     *
+     *  ```java
+     *   /**
+     *    * Permet de savoir si la touche a été tappée.
+     *    * Cette méthode retourne true si la touche a été tappée et false sinon.
+     *    * Elle réinitialise également le statut de la touche après avoir été appelée.
+     *    *
+     *    * @return true si la touche a été tappée, false sinon
+     *    */
+     * public boolean getBoutonJ1XTape()
+     * {
+     *     boolean aRetourner = rTape;
+     *     rTape = false;
+     *     return aRetourner;
+     * }
+     * ```
+     *
+     * Dans cette documentation, on décrit :
+     *
+     * - La fonction : `getBoutonJ1XTape()` est une méthode qui permet de savoir si une touche a été tappée.
+     * - Les paramètres : Il n'y a pas de paramètres dans cette fonction.
+     * - La valeur de retour : Cette fonction renvoie un booléen. Si la touche a été tappée (`rTape` était `true`), la fonction renvoie `true` et réinitialise `rTape` à `false`. Si `rTape` était `false`, la fonction renvoie `false` et conserve `rTape` à `false`.
      */
     public boolean getBoutonJ1XTape() {
         boolean aRetourner = rTape;
@@ -497,14 +841,36 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
-     * Il semble que la fonction vous renvoie la valeur d'une variable booléenne nommée \
+     * Voici la documentation JavaDoc pour votre méthode `getBoutonJ1XEnfoncee` :
+     *
+     * ```java
+     * /**
+     *  Cette méthode semble obtenir la valeur d'un booléen nommé r.
+     *
+     *  @return boolean - La valeur actuelle de la variable booléenne r.
+     * /
+     * public boolean getBoutonJ1XEnfoncee() {
+     *     return r;
+     * }
+     * ```
+     *
+     * Dans cette documentation, nous décrivons la tâche de la méthode `getBoutonJ1XEnfoncee` et expliquons ce qu'elle renvoie. Le paramètre `r` est un booléen qui contient une valeur booléenne. La méthode renvoie simplement cette valeur. Donc, aucun paramètre n'est présenté ici, car c'est la méthode elle-même qui renvoie la valeur de la variable `r`.
      */
     public boolean getBoutonJ1XEnfoncee() {
         return r;
     }
 
     /**
-     * La fonction `getBoutonJ1YTape` est définie pour vérifier si la touche \
+     * /**
+     *  Cette méthode est définie pour vérifier si le bouton J1 a été tapé.
+     *
+     *  @return boolean - Retourne true si le bouton J1 a été tapé, sinon retourne false.
+     * /
+     * public boolean getBoutonJ1YTape() {
+     *     boolean aRetourner = tTape;
+     *     tTape = false;
+     *     return aRetourner;
+     * }
      */
     public boolean getBoutonJ1YTape() {
         boolean aRetourner = tTape;
@@ -513,9 +879,16 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
-     * La documentation que vous avez fournie est correcte pour la fonction `getBoutonJ1YEnfoncee`. Elle présente une description claire et concise de la fonction, ses préconditions et ses résultats attendus.
+     * /**
+     *  Cette méthode permet de déterminer si le bouton J1Y est enfoncée ou non.
      *
-     * Cependant, comme vous n'avez pas déclaré la variable `t` dans votre code, je ne peux pas vous indiquer si c'est une bonne pratique ou non. Si `t` est une variable de type booléenne indiquant si la touche \
+     *  @return boolean - true si le bouton J1Y est enfoncé, false sinon
+     *
+     *  @throws Exception si t n'est pas déclaré dans la portée de cette méthode
+     * /
+     * public boolean getBoutonJ1YEnfoncee() {
+     *     return t;
+     * }
      */
     public boolean getBoutonJ1YEnfoncee() {
         return t;
@@ -526,7 +899,18 @@ public class ClavierBorneArcade implements KeyListener {
      *
      * ```java
      * /**
-     *  Permet de savoir si la touche \
+     *  Permet de savoir si le bouton J1 est zapé
+     *
+     *  @return true si le bouton J1 est zapé, false sinon
+     * /
+     * public boolean getBoutonJ1ZTape() {
+     *     boolean aRetourner = yTape;
+     *     yTape = false;\u003c｜begin▁of▁sentence｜\u003e;
+     *     return aRetourner;
+     * }
+     * ```
+     *
+     * Dans cette fonction, `getBoutonJ1ZTape()` est une méthode qui permet de savoir si le bouton J1 a été zapé ou non. Elle renvoie un booléen : `true` si le bouton J1 est zapé, `false` sinon. Après avoir vérifié la valeur, la variable `yTape` est réinitialisée à `false` pour préparer la vérification pour la prochaine appel de la méthode.
      */
     public boolean getBoutonJ1ZTape() {
         boolean aRetourner = yTape;
@@ -535,7 +919,14 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
-     * La fonction `getBoutonJ1ZEnfoncee()` est une méthode Java permettant de vérifier si la touche \
+     * /**
+     *  La fonction `getBoutonJ1ZEnfoncee()` est une méthode Java permettant de vérifier si la touche J1 est enfoncée.
+     *
+     *  @return Un booléen indiquant si la touche J1 est enfoncée (true) ou non (false).
+     * /
+     * public boolean getBoutonJ1ZEnfoncee() {
+     *     return y;
+     * }
      */
     public boolean getBoutonJ1ZEnfoncee() {
         return y;
@@ -543,13 +934,20 @@ public class ClavierBorneArcade implements KeyListener {
 
     // Méthodes //
     /**
-     * La documentation JavaDoc pour la méthode `reinitialisation()` ressemble à ceci:
+     * Voici la documentation JavaDoc complète pour la méthode `reinitialisation()` :
      *
      * ```java
      * /**
      *  Méthode permettant la reinitialisation du clavier. Reinitialisation de tous les événements.
      *
-     *  Cette méthode réinitialise tous les variables booléennes du clavier. Elle est appelée lorsque le clavier doit être \
+     *  Cette méthode réinitialise tous les variables booléennes du clavier. Elle est appelée lorsque le clavier doit être réinitialisé. Cela signifie que toutes les touches seront à false et les touches seront à leur état initial.
+     * /
+     * public void reinitialisation() {
+     *     // ...
+     * }
+     * ```
+     *
+     * Dans cette documentation, il n'y a pas de paramètres (@param) et de valeur de retour (@return) car la méthode `reinitialisation()` ne prend pas de paramètres en entrée et ne renvoie pas de valeur. Elle modifie directement les variables membres du clavier, donc elle n'a pas besoin de renvoyer quoi que ce soit.
      */
     public void reinitialisation() {
         gauche = gaucheTape = droite = droiteTape = false;
@@ -561,21 +959,37 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
-     * Cette fonction est la méthode `keyReleased` d'un `KeyListener` en Java. Cette méthode est appelée automatiquement lors d'un événement de relâchement de touche du clavier.
+     * La documentation JavaDoc pour cette méthode est la suivante :
      *
-     * @param key est un objet `KeyEvent` représentant l'événement clavier.
+     * ```java
+     * /**
+     *  Cette méthode est une gestionnaire d'événements pour l'événement de relâchement de touche du clavier.
      *
-     * @return aucun (`void`).
+     *  @param key est un objet de la classe {@link java.awt.event.KeyEvent} représentant l'événement clavier.
      *
-     * Cette méthode met à jour les variables booléennes qui gèrent les touches du clavier. Si une touche est relâchée, la variable correspondante est mise à `false` et une variable `Tape` est mise à `true`. Cela indique que la touche a été relâchée.
+     *  @return aucun (void).
      *
-     * Par exemple, si la touche F est relâchée, la variable `f` est mise à `false` et `fTape` est mise à `true`.
+     *  Cette méthode met à jour les variables booléennes qui représentent les touches du clavier.
+     *  Si une touche est relâchée, la variable correspondante est mise à `false` et une variable `Tape` est mise à `true`.
+     *  Cela indique que la touche a été relâchée.
      *
-     * Cette méthode est liée à la méthode `keyPressed` via le `KeyListener`, qui permet de gérer l'appui des touches.
+     *  Par exemple, si la touche F est relâchée, la variable `f` est mise à `false` et `fTape` est mise à `true`.
      *
-     * Voir la documentation de `KeyEvent` et `KeyListener` pour plus d'informations :
-     *  {@link https://docs.oracle.com/javase/7/docs/api/java/awt/event/KeyEvent.html KeyEvent}
-     *  {@link https://docs.oracle.com/javase/7/docs/api/java/awt/event/KeyListener.html KeyListener}
+     *  Cette méthode est liée à la méthode {@link #keyPressed(java.awt.event.KeyEvent)} via le {@link java.awt.event.KeyListener},
+     *  qui permet de gérer l'appui des touches.
+     *
+     *  Voir la documentation de {@link java.awt.event.KeyEvent} et {@link java.awt.event.KeyListener}
+     *  pour plus d'informations :
+     *   {@link https://docs.oracle.\u003c｜begin▁of▁sentence｜\u003ecom/javase/7/docs/api/java/awt/event/KeyEvent.html KeyEvent}
+     *   {@link https://docs.oracle.\u003c｜begin▁of▁sentence｜\u003ecom/javase/7/docs/api/java/awt/event/KeyListener.html KeyListener}
+     * /
+     * @Override
+     * public void keyReleased(KeyEvent key) {
+     *     // Code de la méthode
+     * }
+     * ```
+     *
+     * Cette documentation précise le rôle de la méthode, ses paramètres et sa valeur de retour. Elle précise également comment elle est liée à d'autres méthodes et comment elle peut être utilisée.
      */
     @Override
     public void keyReleased(KeyEvent key) {
@@ -664,40 +1078,43 @@ public class ClavierBorneArcade implements KeyListener {
     }
 
     /**
-     * Voici la documentation JavaDoc pour la méthode `keyTyped`:
-     *
-     * ```java
      * /**
-     *  Implements the KeyTyped method - a method automatically called when a keyboard event occurs.
+     *  Implémente la méthode `keyTyped` - une méthode appelée automatiquement lorsqu'un événement clavier se produit.
      *  \u003cbr\u003e\u003cbr\u003e
-     *  This method should be implemented but is unnecessary in this engine.
+     *  Cette méthode doit être implémentée mais est inutile dans ce moteur de jeu.
      *
-     *  @param k the KeyEvent object containing the event details
+     *  @param k l'objet KeyEvent contenant les détails de l'événement
      * /
      * @Override
      * public void keyTyped(KeyEvent k) {
-     *     // The method body is intentionally left blank
+     *     // La corps de la méthode est intentionnellement laissé vide
      * }
-     * ```
-     *
-     * Dans cette documentation, on spécifie que cette méthode `keyTyped` est une méthode qui est surchargée pour gérer les événements clavier. Cependant, cette méthode est inutile dans ce moteur de jeu car elle n'est pas utilisée.
-     *
-     * La méthode attend un objet `KeyEvent` en paramètre, qui contient les détails de l'événement. Cependant, comme cette méthode est inutile dans ce contexte, son implémentation est inutile aussi.
      */
     @Override
     public void keyTyped(KeyEvent k) {
     }
 
     /**
+     * Voici la documentation JavaDoc pour la méthode `keyPressed` :
+     *
+     * ```java
      * /**
      *  Implémente la méthode KeyPressed - méthode appelée automatiquement lors d'un événement clavier.
-     *  \u003cbr /\u003e\u003cbr /\u003e
-     *  Cette méthode met à jour les valeurs des attributs en fonction des interactions au clavier.\u003cbr /\u003e
-     *  Ici, si une touche est pressée, l'attribut correspondant à cette touche est mis à jour.\u003cbr /\u003e
+     *  \u003cbr/\u003e\u003cbr/\u003e
+     *  Cette méthode met à jour les valeurs des attributs en fonction des interactions au clavier.
+     *  Ici, si une touche est pressée, l'attribut correspondant à cette touche est mis à jour.
      *  Pour gérer le relâchement des touches, voir la méthode keyReleased(KeyEvent k).
      *
      *  @param key un événement clavier
-     *  @see \u003ca href=\
+     *  @see KeyEvent
+     * /
+     * @Override
+     * public void keyPressed(KeyEvent key) {
+     *     // Code de la méthode ici...
+     * }
+     * ```
+     *
+     * Cette documentation est basée sur la description que vous avez fournie, mais elle ne mentionne pas explicitement les paramètres d'entrée ou le type de valeur de retour de la méthode. Dans votre code, il semble que `keyPressed` ait une seule entrée de type `KeyEvent` et ne retourne pas de valeur. Dans le cas général, il n'y a pas de paramètre et le type de la valeur de retour serait `void`.
      */
     @Override
     public void keyPressed(KeyEvent key) {

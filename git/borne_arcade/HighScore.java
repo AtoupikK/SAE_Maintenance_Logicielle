@@ -12,24 +12,22 @@ import java.io.FileWriter;
 class HighScore {
 
     /**
-     * ```java
      * /**
      *  Renvoie le caractère suivant dans l'ordre alphabétique.
      *
      *  @param c le caractère actuel.
      *  @return le caractère suivant dans l'ordre alphabétique, '.' si le caractère est 'Z',
-     *           ' ' si le caractère est ' ', sinon le caractère lui-même.
+     *            ' ' si le caractère est ' ', sinon le caractère lui-même.
      * /
      * public static char suivant(char c) {
-     *     if  (c \u003e= 'A'  \u0026\u0026 c \u003c 'Z')
+     *     if (c \u003e= 'A' \u0026\u0026 c \u003c 'Z')
      *         return (char) (c + 1);
-     *     if  (c == 'Z')
+     *     if (c == 'Z')
      *         return '.';
-     *     if  (c == '.')
+     *     if (c == '.')
      *         return ' ';
      *     return 'A';
      * }
-     * ```
      */
     public static char suivant(char c) {
         if (c >= 'A' && c < 'Z')
@@ -42,17 +40,15 @@ class HighScore {
     }
 
     /**
-     * Voici la documentation JavaDoc de votre fonction :
-     *
-     * ```java
      * /**
      *  Cette méthode prend en paramètre un caractère et renvoie le caractère précédent dans l'alphabet.
+     *  Si le caractère est étroitement entre 'A' et 'Z', elle renvoie le caractère précédent dans l'ordre alphabétique.
      *  Si le caractère est 'A', elle renvoie un espace vide.
      *  Si le caractère est vide, elle renvoie un point.
      *  Pour tous les autres caractères, elle renvoie le caractère 'Z'.
      *
      *  @param c le caractère à traiter
-     *  @return le caractère précédent dans l'ordre alphabétique
+     *  @return le caractère précédent dans l'ordre alphabétique, ou un espace vide, un point ou 'Z' si le caractère n'est pas valide.
      * /
      * public static char precedent(char c) {
      *     if (c \u003e 'A' \u0026\u0026 c \u003c= 'Z')
@@ -63,9 +59,6 @@ class HighScore {
      *         return '.';
      *     return 'Z';
      * }
-     * ```
-     *
-     * Cette documentation décrit clairement le rôle de la méthode et ses paramètres. Elle définit aussi ce que la méthode renvoie.
      */
     public static char precedent(char c) {
         if (c > 'A' && c <= 'Z')
@@ -78,9 +71,8 @@ class HighScore {
     }
 
     /**
-     * ```java
      * /**
-     *  Demande l'enregistrement du nom d'un joueur dans le fichier de high scores.
+     *  Enregistre le nom d'un joueur dans le fichier de high scores.
      *
      *  @param f Fenetre active.
      *  @param clavier Clavier de la borne arcade.
@@ -91,7 +83,6 @@ class HighScore {
      * public static void demanderEnregistrerNom(Fenetre f, ClavierBorneArcade clavier, Texture t, int s, String fichierHighScore) {
      *     // ...
      * }
-     * ```
      */
     public static void demanderEnregistrerNom(Fenetre f, ClavierBorneArcade clavier, Texture t, int s, String fichierHighScore) {
         ArrayList<LigneHighScore> list = lireFichier(fichierHighScore);
@@ -237,12 +228,14 @@ class HighScore {
     }
 
     /**
+     * La documentation JavaDoc de votre fonction est la suivante :
+     *
      * ```java
      * /**
      *  Lit un fichier et stocke chaque ligne sous forme de LigneHighScore dans une ArrayList.
      *
      *  @param fichier Chemin du fichier à lire.
-     *  @return Une ArrayList contenant les lignes du fichier sous forme de LigneHighScore.
+     *  @return Une ArrayList contenant les lignes du fichier sous forme de LigneHighScore. Si le fichier n'est pas trouvé ou si une erreur d'entrée/sortie survient lors de la lecture du fichier, une liste vide est renvoyée.
      *  @throws FileNotFoundException Si le fichier n'est pas trouvé.
      *  @throws IOException Si une erreur d'entrée/sortie survient lors de la lecture du fichier.
      * /
@@ -257,6 +250,8 @@ class HighScore {
      *     return l;
      * }
      * ```
+     *
+     * Notez que je suis aussi renvoyé une liste vide en cas de `FileNotFoundException` ou `IOException` pour éviter une `NullPointerException` dans le code appelant. Cela est recommandé de faire car cela permet d'avoir une liste vide et de ne pas devoir gérer une exception dans chaque endroit où cette méthode est appelée.
      */
     public static ArrayList<LigneHighScore> lireFichier(String fichier) {
         ArrayList<LigneHighScore> l = new ArrayList<LigneHighScore>();
@@ -273,7 +268,6 @@ class HighScore {
     }
 
     /**
-     * ```java
      * /**
      *  Enregistre un nouveau high score dans le fichier spécifié.
      *
@@ -285,13 +279,6 @@ class HighScore {
      * public static void enregistrerFichier(String fichier, ArrayList\u003cLigneHighScore\u003e list, String nom, int score) {
      *     // Code omitted for brevity
      * }
-     * ```
-     *
-     * Cette fonction `enregistrerFichier` est utilisée pour enregistrer un nouveau high score dans un fichier high score. Elle prend quatre paramètres : le chemin vers le fichier high score (`fichier`), la liste des high scores actuelles (`list`), le nom du joueur (`nom`) et le score du joueur (`score`).
-     *
-     * Le code de la fonction a été laissé pour simplification de la documentation. Elle contient une logique pour ajouter le nouveau score dans la bonne position dans la liste, la limiter à 10 high scores, et la sauvegarder dans le fichier spécifié.
-     *
-     * La fonction n'a pas de valeur de retour spécifiée (`@return`), car la fonction est vide (`void`).
      */
     public static void enregistrerFichier(String fichier, ArrayList<LigneHighScore> list, String nom, int score) {
         int position = 0;

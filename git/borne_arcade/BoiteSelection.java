@@ -110,9 +110,6 @@ public class BoiteSelection extends Boite {
     }
 
     /**
-     * Voici la documentation JavaDoc de votre méthode :
-     *
-     * ```java
      * /**
      *  Cette méthode est utilisée pour obtenir la valeur de l'attribut 'pointeur' de l'objet.
      *
@@ -121,15 +118,15 @@ public class BoiteSelection extends Boite {
      * public Pointeur getPointeur() {
      *     return pointeur;
      * }
-     * ```
-     *
-     * Dans cette documentation, @return spécifie que la méthode renvoie une instance de la classe Pointeur. L'attribut 'pointeur' est le résultat de la méthode, et son type est défini par le mot-clé 'Pointeur'.
      */
     public Pointeur getPointeur() {
         return pointeur;
     }
 
     /**
+     * La documentation JavaDoc pour la méthode `setPointeur` est la suivante :
+     *
+     * ```java
      * /**
      *  Méthode pour définir la valeur du pointeur.
      *
@@ -138,6 +135,9 @@ public class BoiteSelection extends Boite {
      * public void setPointeur(Pointeur pointeu) {
      *     this.pointeur = pointeu;
      * }
+     * ```
+     *
+     * Dans cette documentation, on spécifie que la méthode `setPointeur` a un paramètre de type `Pointeur` nommé `pointeu`. Cependant, il n'est pas clair quel est le rôle de cette méthode dans la classe ou l'objet auquel elle appartient, car la documentation ne spécifie pas cela.
      */
     public void setPointeur(Pointeur pointeu) {
         this.pointeur = pointeu;

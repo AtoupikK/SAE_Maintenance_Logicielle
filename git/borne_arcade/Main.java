@@ -1,11 +1,9 @@
 public class Main {
 
     /**
-     * La documentation JavaDoc pour la méthode main de votre programme peut être comme suit :
-     *
      * ```java
      * /**
-     *  Méthode principale de l'application.
+     *  La méthode principale de l'application.
      *
      *  La méthode s'exécute en boucle infinie tant que le programme est en cours d'exécution.
      *  Elle appelle régulièrement la méthode {@link Graphique#selectionJeu()} de l'objet Graphique.
@@ -20,11 +18,7 @@ public class Main {
      *         g.selectionJeu();
      *     }
      * }
-     * ```
      *
-     * Cependant, il semble que vous voulez écrire une documentation pour la méthode `selectionJeu()` de la classe `Graphique`. Dans ce cas, voici un exemple de documentation pour cette méthode :
-     *
-     * ```java
      * /**
      *  Méthode permettant de sélectionner le jeu en cours.
      *
@@ -36,8 +30,6 @@ public class Main {
      *     // Code de la méthode ici
      * }
      * ```
-     *
-     * Veuillez noter que JavaDoc suppose que vous avez déjà une compréhension de ce que la méthode fait et comment elle est utilisée. Il n'est pas possible de générer automatiquement la documentation à partir du code source.
      */
     public static void main(String[] args) {
         Graphique g = new Graphique();

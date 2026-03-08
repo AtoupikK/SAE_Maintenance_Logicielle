@@ -15,8 +15,8 @@ class TestClavierBorneArcade {
     /**
      * ```java
      * /**
-     *  ClavierBorneArcadeMain est la classe principale de l'application de borne d'arcade avec clavier. Elle initialise la fenêtre, les objets graphiques (cercle, ligne),
-     *  et met en place les écouteurs d'événements clavier pour contrôler les objets graphiques.
+     *  ClavierBorneArcadeMain est la classe principale de l'application de borne d'arcade avec clavier. Elle initialise la fenêtre, les objets graphiques
+     *  (cercle, ligne), et met en place les écouteurs d'événements clavier pour contrôler les objets graphiques.
      *
      *  @author [Votre Nom]
      *  @version 1.0

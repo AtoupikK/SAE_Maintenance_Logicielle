@@ -37,6 +37,8 @@ class LigneHighScore {
     }
 
     /**
+     * Voici la documentation JavaDoc pour la méthode `getScore()`:
+     *
      * ```java
      * /**
      *  Cette méthode est utilisée pour obtenir le score de l'objet.
@@ -53,6 +55,9 @@ class LigneHighScore {
     }
 
     /**
+     * Voici la documentation JavaDoc pour la méthode `getNom()`:
+     *
+     * ```java
      * /**
      *  Cette méthode est utilisée pour obtenir le nom de l'objet.
      *
@@ -61,6 +66,9 @@ class LigneHighScore {
      * public String getNom() {
      *     return nom;
      * }
+     * ```
+     *
+     * Dans cette documentation, on décrit brièvement le but de la méthode, son entrée et son sortie. Dans le cas de la méthode `getNom()`, elle ne prend pas de paramètres et renvoie une chaîne de caractères qui est le nom de l'objet.
      */
     public String getNom() {
         return nom;

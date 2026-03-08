@@ -24,11 +24,11 @@ public class Pointeur {
     }
 
     /**
-     * ```java
      * /**
      *  Méthode pour lancer le jeu en utilisant un ClavierBorneArcade.
      *
      *  @param clavier Le ClavierBorneArcade qui contrôle l'action de lancer le jeu.
+     *  @return Aucune (void).
      * /
      * public void lancerJeu(ClavierBorneArcade clavier) {
      *     // Vérifie si le bouton J1 (touche f) est enfoncé.
@@ -58,16 +58,14 @@ public class Pointeur {
     }
 
     /**
-     * ```java
      * /**
      *  Récupère la valeur de l'objet.
      *
-     *  @return la valeur de l'objet.
+     *  @return la valeur de l'objet
      * /
      * public int getValue() {
      *     return value;
      * }
-     * ```
      */
     public int getValue() {
         return value;
@@ -88,26 +86,18 @@ public class Pointeur {
     }
 
     /**
-     * Voici la documentation JavaDoc pour la méthode `getTriangleGauche()` :
+     * Votre fonction `getTriangleGauche()` est une méthode Java qui renvoie un objet `Texture` représentant le triangle gauche.
      *
-     * ```java
-     * /**
-     *  Méthode pour obtenir l'objet Texture du triangle gauche.
-     *
-     *  @return Texture représentant le triangle gauche
-     * /
-     * public Texture getTriangleGauche() {
-     *     return triangleGauche;
-     * }
-     * ```
-     *
-     * Dans cette documentation, `@return` est utilisé pour indiquer le type de valeur renvoyée par la méthode. Ici, elle renvoie un objet de type `Texture`.
+     * @return Texture - Renvoie l'objet Texture représentant le triangle gauche.
      */
     public Texture getTriangleGauche() {
         return triangleGauche;
     }
 
     /**
+     * La documentation JavaDoc pour la méthode `setTriangleGauche` est la suivante:
+     *
+     * ```java
      * /**
      *  Définit la texture qui sera utilisée pour le triangle gauche.
      *
@@ -116,27 +106,35 @@ public class Pointeur {
      * public void setTriangleGauche(Texture triangleGauche) {
      *     this.triangleGauche = triangleGauche;
      * }
+     * ```
+     *
+     * La documentation décrit brièvement le but de la méthode, comment elle est utilisée et les paramètres qu'elle attend. Elle est utilisée par les outils de génération de documentation Java pour générer automatiquement la documentation de l'API.
      */
     public void setTriangleGauche(Texture triangleGauche) {
         this.triangleGauche = triangleGauche;
     }
 
     /**
+     * Voici la documentation JavaDoc pour votre méthode :
+     *
+     * ```java
      * /**
      *  Méthode permettant d'obtenir l'objet Texture représentant le triangle de droite.
      *
-     *  @return le triangle de droite.
+     *  @return le triangle de droite représenté par l'objet Texture.
      * /
      * public Texture getTriangleDroite() {
      *     return triangleDroite;
      * }
+     * ```
+     *
+     * Dans cette documentation, nous expliquons ce que la méthode fait et ce qu'elle renvoie. Le type de la valeur renvoyée est un `Texture`, donc nous indiquons cela avec `@return`.
      */
     public Texture getTriangleDroite() {
         return triangleDroite;
     }
 
     /**
-     * ```java
      * /**
      *  Méthode permettant de définir la texture du triangle à droite.
      *
@@ -145,7 +143,6 @@ public class Pointeur {
      * public void setTriangleDroite(Texture triangleDroite) {
      *     this.triangleDroite = triangleDroite;
      * }
-     * ```
      */
     public void setTriangleDroite(Texture triangleDroite) {
         this.triangleDroite = triangleDroite;
@@ -166,6 +163,8 @@ public class Pointeur {
     }
 
     /**
+     * Voici la documentation JavaDoc pour la méthode `setRectangleCentre`:
+     *
      * ```java
      * /**
      *  Méthode pour définir le centre du rectangle.
@@ -176,6 +175,8 @@ public class Pointeur {
      *     this.rectangleCentre = rectangleCentre;
      * }
      * ```
+     *
+     * Dans cette documentation, `@param` est utilisé pour décrire le paramètre de la méthode (`rectangleCentre`). Le `@return` n'est pas nécessaire ici car la méthode est void, elle ne renvoie pas de valeur.
      */
     public void setRectangleCentre(Texture rectangleCentre) {
         this.rectangleCentre = rectangleCentre;

@@ -259,6 +259,8 @@ public class Graphique {
     }
 
     /**
+     * Voici la documentation JavaDoc pour votre fonction :
+     *
      * ```java
      * /**
      *  Cette méthode est utilisée pour lire une musique de fond aléatoirement.
