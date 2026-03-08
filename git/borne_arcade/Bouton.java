@@ -194,8 +194,6 @@ public class Bouton {
      *
      * Cette documentation décrit la méthode `getTexture()` de la classe. Elle est écrite en JavaDoc, qui est un format de documentation spécifique pour Java.
      *
-     * - `/**` : C'est le commentaire de bloc JavaDoc. Il commence par `/**` et se termine par `*/`. Tout le texte entre ces deux commentaires est considéré comme la documentation de la méthode.
-     * - `@return Texture - Retourne la texture de l'objet.` : C'est une annotation JavaDoc qui spécifie le type de valeur renvoyée par la méthode et une brève description. Dans ce cas, la méthode renvoie une instance de la classe `Texture` et la description indique ce qui se passe.
      */
     public Texture getTexture() {
         return texture;
