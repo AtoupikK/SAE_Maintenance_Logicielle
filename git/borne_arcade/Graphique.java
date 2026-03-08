@@ -86,7 +86,7 @@ public class Graphique {
         //f.ajouter(bi.getRectangle());
         bd = new BoiteDescription(new Rectangle(Couleur.GRIS, new Point(640, 0), new Point(TAILLEX, 512), true));
         bd.lireFichier(tableau[pointeur.getValue()].getChemin());
-        bd.readHighScore(tableau[pointeur.getValue()].getChemin());
+        bd.lireHighScore(tableau[pointeur.getValue()].getChemin());
         //f.ajouter(bd.getRectangle());
         Texture fond = new Texture("img/fondretro3.png", new Point(0, 0), TAILLEX, TAILLEY);
         f.ajouter(fond);
@@ -207,7 +207,7 @@ public class Graphique {
                     // }
                     tableau[pointeur.getValue()].getTexte().setPolice(font);
                     bd.lireFichier(tableau[pointeur.getValue()].getChemin());
-                    bd.readHighScore(tableau[pointeur.getValue()].getChemin());
+                    bd.lireHighScore(tableau[pointeur.getValue()].getChemin());
                     bd.lireBouton(tableau[pointeur.getValue()].getChemin());
                     /*
 				// System.out.println(tableau[pointeur.getValue()].getChemin());
