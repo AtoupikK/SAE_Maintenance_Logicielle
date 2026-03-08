@@ -27,49 +27,49 @@ jobs:
         distribution: temurin
         java-version: 21
 
-
-    - name: Install Ollama
-      if: steps.changed.outputs.files != ''
-      run: curl -fsSL https://ollama.com/install.sh | s
-
-     - name: Start Ollama
-      if: steps.changed.outputs.files != ''
-      run: |
-        ollama serve &
-        sleep 5
-
-    - name: Pull model
-      if: steps.changed.outputs.files != ''
-      run: ollama pull deepseek-coder:6.7b
-
     - name: Get modified Java files
-      id: modified-files
+      id: java-files
       uses: GrantBirki/git-diff-action@v1
       with:
         json_diff_file_output: diff.json
         file_output_only: "true"
 
     - name: Set modified Java files
-      id: java-files
+      id: set-files
       run: |
         FILES=$(jq -r '.[] | select(.filename|test("^git/borne_arcade/[^/]+\\.java$")) | .filename' diff.json)
         echo "Modified Java files: $FILES"
         echo "::set-output name=files::$FILES"h
 
+    - name: Install Ollama
+      if: steps.changed.outputs.files != ''
+      run: curl -fsSL https://ollama.com/install.sh | sh
+
+    - name: Start Ollama
+       if: steps.changed.outputs.files != ''
+       run: |
+         ollama serve &
+         sleep 5
+
+    - name: Pull model
+      if: steps.changed.outputs.files != ''
+      run: ollama pull deepseek-coder:6.7b
+
     - name: Compile project
+      if: steps.set-files.outputs.files != ''
       working-directory: git/borne_arcade
       run: |
-        for f in ${{ steps.java-files.outputs.files }}; do
+        for f in ${{ steps.set-files.outputs.files }}; do
           echo "Processing $f"
           javac -cp "libs/javaparser-core-3.25.10.jar:." "$(basename $f)"
           java -cp "libs/javaparser-core-3.25.10.jar:." GenerateDoc "$(basename $f)"
         done
 
     - name: Commit changes
-      if: steps.changed.outputs.files != ''
+      if: steps.set-files.outputs.files != ''
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git add .
         git commit -m "Génération automatique de documentation" || echo "Rien à modifier"
-        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/AtoupikK/SAE_Maintenance_Logicielle.git HEAD:main
+        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/AtoupikK/SAE_Maintenance_Logicielle.g>
