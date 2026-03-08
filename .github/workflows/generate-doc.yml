@@ -53,7 +53,7 @@ jobs:
       if: steps.modified-files.outputs.files != ''
       working-directory: git/borne_arcade
       run: |
-        javac -cp "libs/javaparser-core3.25.10.jar:." GenerateDoc.java
+        javac -cp "libs/javaparser-core-3.25.10.jar:." GenerateDoc.java
         IFS=',' read -ra FILE_ARRAY <<< "${{ steps.modified-files.outputs.files }}"
         for f in "${FILE_ARRAY[@]}"; do
           echo "Processing $f"
