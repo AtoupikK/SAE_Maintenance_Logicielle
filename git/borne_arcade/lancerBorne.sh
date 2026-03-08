@@ -19,6 +19,7 @@ echo "Veuillez patienter"
 echo "Lancement du  Menu"
 echo "Veuillez patienter"
 
+javac Main.java
 java Main
 
 ./clean.sh
