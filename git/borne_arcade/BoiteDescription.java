@@ -444,4 +444,8 @@ public class BoiteDescription extends Boite {
       return message;
       }
     */
+
+    public void testFonctionDoc() {
+        System.out.print("Test");
+    }
 }
