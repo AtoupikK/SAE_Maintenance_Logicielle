@@ -30,10 +30,10 @@ jobs:
     - name: Get modified Java files
       id: changed
       run: |
-        FILES=$(git diff --name-only origin/main HEAD | grep "^git/borne_arcade/[^/]*\.java$" || true)
-        echo "files=$FILES" >> $GITHUB_OUTPUT
-        echo "Changed files:"
-        echo "$FILES"
+      FILES=$(jq -r '.commits[].modified + .commits[].added | .[]' "$GITHUB_EVENT_PATH" \
+      | grep "^git/borne_arcade/[^/]*\.java$" || true)
+    echo "FILES=$FILES" >> $GITHUB_ENV
+
 
     - name: Install Ollama
       if: steps.changed.outputs.files != ''
