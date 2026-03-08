@@ -51,6 +51,7 @@ jobs:
 
     - name: Run doc generator
       if: steps.modified-files.outputs.files != ''
+      javac -cp "libs/javaparser-core3.25.10.jar:." GenerateDoc.java
       working-directory: git/borne_arcade
       run: |
         IFS=',' read -ra FILE_ARRAY <<< "${{ steps.modified-files.outputs.files }}"
