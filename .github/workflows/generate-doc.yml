@@ -30,7 +30,7 @@ jobs:
     - name: Get modified Java files
       id: changed
       run: |
-        FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep "^git/borne_arcade/[^/]*\.java$" || true)
+        FILES=$(git diff --name-only origin/main HEAD | grep "^git/borne_arcade/[^/]*\.java$" || true)
         echo "files=$FILES" >> $GITHUB_OUTPUT
         echo "Changed files:"
         echo "$FILES"
