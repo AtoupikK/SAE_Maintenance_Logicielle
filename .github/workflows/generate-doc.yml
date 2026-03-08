@@ -57,7 +57,7 @@ jobs:
         IFS=',' read -ra FILE_ARRAY <<< "${{ steps.modified-files.outputs.files }}"
         for f in "${FILE_ARRAY[@]}"; do
           echo "Processing $f"
-          java -cp "libs/javaparser-core-3.25.10.jar:." GenerateDoc "$f"
+          java -cp "libs/javaparser-core-3.25.10.jar:." GenerateDoc "$(basename $f)"
         done
 
     - name: Commit changes
