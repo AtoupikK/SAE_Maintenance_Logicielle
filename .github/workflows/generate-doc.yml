@@ -46,10 +46,10 @@ jobs:
       run: curl -fsSL https://ollama.com/install.sh | sh
 
     - name: Start Ollama
-       if: steps.changed.outputs.files != ''
-       run: |
-         ollama serve &
-         sleep 5
+      if: steps.changed.outputs.files != ''
+      run: |
+        ollama serve &
+        sleep 5
 
     - name: Pull model
       if: steps.changed.outputs.files != ''
