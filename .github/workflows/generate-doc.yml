@@ -27,27 +27,40 @@ jobs:
         distribution: temurin
         java-version: 21
 
-    - name: Install Ollama
+    - name: Get modified Java files
+      id: changed
       run: |
-        curl -fsSL https://ollama.com/install.sh | sh
+        FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep "^git/borne_arcade/[^/]*\.java$" || true)
+        echo "files=$FILES" >> $GITHUB_OUTPUT
+        echo "Changed files:"
+        echo "$FILES"
+
+    - name: Install Ollama
+      if: steps.changed.outputs.files != ''
+      run: curl -fsSL https://ollama.com/install.sh | sh
 
     - name: Start Ollama
+      if: if: steps.changed.outputs.files != ''
       run: |
         ollama serve &
         sleep 5
 
     - name: Pull model
+      if: steps.changed.outputs.files != ''
       run: ollama pull deepseek-coder:6.7b
 
     - name: Compile project
+      if: steps.changed.outputs.files != ''
       working-directory: git/borne_arcade
       run: javac -cp "libs/javaparser-core-3.25.10.jar:." GenerateDoc.java
 
     - name: Run doc generator
+      if: steps.changed.outputs.files != ''
       working-directory: git/borne_arcade
       run: java -cp "libs/javaparser-core-3.25.10.jar:." GenerateDoc
 
     - name: Commit changes
+      if: steps.changed.outputs.files != ''
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
