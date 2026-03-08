@@ -440,10 +440,6 @@ public class BoiteDescription extends Boite {
     public void settBouton(String s, int a) {
         this.tBouton[a].setTexte(s);
     }
-    /*public Texte getMessage() {
-      return message;
-      }
-    */
 
     public void TestFonctioNDocumentation() {
         System.out.print("Test");
