@@ -17,7 +17,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         persist-credentials: true
 
@@ -27,21 +27,12 @@ jobs:
         distribution: temurin
         java-version: 21
 
-    - name: Get modified Java files
-      id: changed
-      run: |
-        FILES=$(jq -r '
-      [.commits[].added[], .commits[].modified[]] 
-      | .[] 
-      | select(test("^git/borne_arcade/[^/]*\\.java$"))
-    ' "$GITHUB_EVENT_PATH" || true)
-    echo "FILES=$FILES" >> $GITHUB_ENV
 
     - name: Install Ollama
       if: steps.changed.outputs.files != ''
-      run: curl -fsSL https://ollama.com/install.sh | sh
+      run: curl -fsSL https://ollama.com/install.sh | s
 
-    - name: Start Ollama
+     - name: Start Ollama
       if: steps.changed.outputs.files != ''
       run: |
         ollama serve &
@@ -51,15 +42,28 @@ jobs:
       if: steps.changed.outputs.files != ''
       run: ollama pull deepseek-coder:6.7b
 
-    - name: Compile project
-      if: steps.changed.outputs.files != ''
-      working-directory: git/borne_arcade
-      run: javac -cp "libs/javaparser-core-3.25.10.jar:." GenerateDoc.java
+    - name: Get modified Java files
+      id: modified-files
+      uses: GrantBirki/git-diff-action@v1
+      with:
+        json_diff_file_output: diff.json
+        file_output_only: "true"
 
-    - name: Run doc generator
-      if: steps.changed.outputs.files != ''
+    - name: Set modified Java files
+      id: java-files
+      run: |
+        FILES=$(jq -r '.[] | select(.filename|test("^git/borne_arcade/[^/]+\\.java$")) | .filename' diff.json)
+        echo "Modified Java files: $FILES"
+        echo "::set-output name=files::$FILES"h
+
+    - name: Compile project
       working-directory: git/borne_arcade
-      run: java -cp "libs/javaparser-core-3.25.10.jar:." GenerateDoc
+      run: |
+        for f in ${{ steps.java-files.outputs.files }}; do
+          echo "Processing $f"
+          javac -cp "libs/javaparser-core-3.25.10.jar:." "$(basename $f)"
+          java -cp "libs/javaparser-core-3.25.10.jar:." GenerateDoc "$(basename $f)"
+        done
 
     - name: Commit changes
       if: steps.changed.outputs.files != ''
