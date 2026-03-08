@@ -441,7 +441,7 @@ public class BoiteDescription extends Boite {
         this.tBouton[a].setTexte(s);
     }
 
-    public void TestFonctioNDocumentation() {
+    public void TestFonctioNDoc() {
         System.out.print("Test");
     }
 }
