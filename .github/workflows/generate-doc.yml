@@ -29,7 +29,7 @@ jobs:
 
     - name: Get modified Java files
       id: java-files
-      uses: GrantBirki/git-diff-action@v1
+      uses: GrantBirki/git-diff-action@v3.0.0
       with:
         json_diff_file_output: diff.json
         file_output_only: "true"
