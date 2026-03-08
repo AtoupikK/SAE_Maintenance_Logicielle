@@ -712,7 +712,7 @@ public class ClavierBorneArcade implements KeyListener {
      *    Récupère l'état de la touche J1A \
      *
      *    @return true si la touche J1A est enfoncée, false sinon
-     *   */
+     *   
      * public boolean getBoutonJ1AEnfoncee() {
      *     return f;
      * }
@@ -819,7 +819,7 @@ public class ClavierBorneArcade implements KeyListener {
      *    * Elle réinitialise également le statut de la touche après avoir été appelée.
      *    *
      *    * @return true si la touche a été tappée, false sinon
-     *    */
+     *    
      * public boolean getBoutonJ1XTape()
      * {
      *     boolean aRetourner = rTape;
@@ -832,7 +832,6 @@ public class ClavierBorneArcade implements KeyListener {
      *
      * - La fonction : `getBoutonJ1XTape()` est une méthode qui permet de savoir si une touche a été tappée.
      * - Les paramètres : Il n'y a pas de paramètres dans cette fonction.
-     * - La valeur de retour : Cette fonction renvoie un booléen. Si la touche a été tappée (`rTape` était `true`), la fonction renvoie `true` et réinitialise `rTape` à `false`. Si `rTape` était `false`, la fonction renvoie `false` et conserve `rTape` à `false`.
      */
     public boolean getBoutonJ1XTape() {
         boolean aRetourner = rTape;
