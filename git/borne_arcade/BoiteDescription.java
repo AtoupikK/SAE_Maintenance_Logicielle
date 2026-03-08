@@ -186,7 +186,7 @@ public class BoiteDescription extends Boite {
     }
 
     /**
-     * La documentation JavaDoc pour la méthode `readHighScore` est la suivante :
+     * La documentation JavaDoc pour la méthode `lireHighScore` est la suivante :
      *
      * ```java
      * /**
@@ -195,14 +195,14 @@ public class BoiteDescription extends Boite {
      *  @param path le chemin du dossier contenant le fichier highscore.
      *  @throws IOException si le fichier n'existe pas ou s'il y a un problème lors de sa lecture.
      * /
-     * public void readHighScore(String path) throws IOException {
+     * public void lireHighScore(String path) throws IOException {
      *     // le reste de votre code ici
      * }
      * ```
      *
      * Notez que je n'ai pas inclué les `@param` et `@return` car la méthode n'a pas de résultat à renvoyer. Si cette méthode modifie des objets ou des variables d'état, vous devriez ajouter des `@param` pour expliquer les entrées et `@return` pour expliquer le résultat de la méthode.
      */
-    public void readHighScore(String path) {
+    public void lireHighScore(String path) {
         for (int i = 0; i < 10; i++) {
             if (i == 0)
                 listeHighScore[i].setTexte("1er - ");
