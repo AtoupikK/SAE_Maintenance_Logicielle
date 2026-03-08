@@ -54,10 +54,10 @@ public void lireFichier(String path) {
     }
 }
 
----- Méthode : readHighScore ----
-Signature : void readHighScore(String)
+---- Méthode : lireHighScore ----
+Signature : void lireHighScore(String)
 Contenu :
-public void readHighScore(String path) {
+public void lireHighScore(String path) {
     for (int i = 0; i < 10; i++) {
         if (i == 0)
             listeHighScore[i].setTexte("1er - ");
@@ -1148,7 +1148,7 @@ public void selectionJeu() {
                 // }
                 tableau[pointeur.getValue()].getTexte().setPolice(font);
                 bd.lireFichier(tableau[pointeur.getValue()].getChemin());
-                bd.readHighScore(tableau[pointeur.getValue()].getChemin());
+                bd.lireHighScore(tableau[pointeur.getValue()].getChemin());
                 bd.lireBouton(tableau[pointeur.getValue()].getChemin());
                 /*
 				// System.out.println(tableau[pointeur.getValue()].getChemin());
