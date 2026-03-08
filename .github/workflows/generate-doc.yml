@@ -49,14 +49,13 @@ jobs:
         FILES_COMMA=$(echo "$FILES" | paste -sd "," -)
         echo "files=$FILES_COMMA" >> $GITHUB_OUTPUT
 
-    - name: Compile and run doc generator
+    - name: Run doc generator
       if: steps.modified-files.outputs.files != ''
       working-directory: git/borne_arcade
       run: |
         IFS=',' read -ra FILE_ARRAY <<< "${{ steps.modified-files.outputs.files }}"
         for f in "${FILE_ARRAY[@]}"; do
           echo "Processing $f"
-          javac -cp "libs/javaparser-core-3.25.10.jar:." "$(basename $f)"
           java -cp "libs/javaparser-core-3.25.10.jar:." GenerateDoc "$f"
         done
 
