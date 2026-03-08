@@ -27,7 +27,7 @@ jobs:
         distribution: temurin
         java-version: 21
 
-    - name: Get modified Java files
+    - name: Get modified Java file
       id: java-files
       uses: GrantBirki/git-diff-action@v3.0.0
       with:
