@@ -202,7 +202,7 @@ public class BoiteDescription extends Boite {
      *
      * Notez que je n'ai pas inclué les `@param` et `@return` car la méthode n'a pas de résultat à renvoyer. Si cette méthode modifie des objets ou des variables d'état, vous devriez ajouter des `@param` pour expliquer les entrées et `@return` pour expliquer le résultat de la méthode.
      */
-    public void readHighScore(String path) {
+    public void lireHighScore(String path) {
         for (int i = 0; i < 10; i++) {
             if (i == 0)
                 listeHighScore[i].setTexte("1er - ");
