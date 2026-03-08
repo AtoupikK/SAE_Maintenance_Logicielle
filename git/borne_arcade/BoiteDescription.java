@@ -133,14 +133,13 @@ public class BoiteDescription extends Boite {
     }
 
     /**
-     * Voici la documentation JavaDoc pour votre méthode `lireFichier`:
+     * Voici la documentation JavaDoc professionnelle pour votre méthode `lireFichier`:
      *
      * ```java
      * /**
      *  Lit un fichier texte spécifié par le chemin fourni et traite chaque ligne de celui-ci.
      *
      *  @param path Le chemin vers le fichier texte à lire.
-     *
      *  @throws IOException Si une erreur se produit lors de la lecture du fichier ou de l'exécution de la logique métier.
      * /
      * public void lireFichier(String path) throws IOException {
@@ -186,11 +185,10 @@ public class BoiteDescription extends Boite {
     }
 
     /**
-     * La documentation JavaDoc pour la méthode `readHighScore` est la suivante :
-     *
-     * ```java
      * /**
-     *  Méthode pour lire les high scores à partir d'un fichier spécifié.
+     *  La documentation JavaDoc pour la méthode `readHighScore` est la suivante :
+     *
+     *  Cette méthode lit les high scores à partir d'un fichier spécifié.
      *
      *  @param path le chemin du dossier contenant le fichier highscore.
      *  @throws IOException si le fichier n'existe pas ou s'il y a un problème lors de sa lecture.
@@ -198,9 +196,6 @@ public class BoiteDescription extends Boite {
      * public void readHighScore(String path) throws IOException {
      *     // le reste de votre code ici
      * }
-     * ```
-     *
-     * Notez que je n'ai pas inclué les `@param` et `@return` car la méthode n'a pas de résultat à renvoyer. Si cette méthode modifie des objets ou des variables d'état, vous devriez ajouter des `@param` pour expliquer les entrées et `@return` pour expliquer le résultat de la méthode.
      */
     public void readHighScore(String path) {
         for (int i = 0; i < 10; i++) {
@@ -225,8 +220,6 @@ public class BoiteDescription extends Boite {
     }
 
     /**
-     * Voici la documentation JavaDoc pour la méthode `lireBouton` :
-     *
      * ```java
      * /**
      *  Cette méthode lit le fichier texte spécifié et l'utilise pour définir le texte des boutons de la manette.
@@ -265,48 +258,32 @@ public class BoiteDescription extends Boite {
     }
 
     /**
-     * Votre code JavaDoc est déjà bien documenté. Cependant, en JavaDoc, il semble que vous vouliez documenter une méthode appelée `getMessage` qui retourne un tableau de `Texte`. Voici comment vous pouvez le faire:
-     *
-     * ```java
      * /**
-     *  Cette méthode retourne le message stocké dans l'objet de type Texte[].
+     *  Retourne le message stocké dans l'objet de type Texte[].
      *
      *  @return Le message stocké dans l'objet de type Texte[]
      * /
      * public Texte[] getMessage() {
      *     return message;
      * }
-     * ```
-     *
-     * Dans cette documentation, `@return` est utilisé pour expliquer le résultat de la méthode. Il décrit ce que la méthode renvoie. Ici, la méthode `getMessage` renvoie un tableau de `Texte`, donc le `@return` dit que c'est un tableau de `Texte` qui est renvoyé par la méthode.
      */
     public Texte[] getMessage() {
         return message;
     }
 
     /**
-     * Voici la documentation JavaDoc pour la méthode `setMessage` :
+     * Cette méthode `setMessage` définit le texte du message à l'index spécifié.
      *
-     * ```java
-     * /**
-     *  Définit le texte du message à l'index spécifié.
+     * @param message Le nouveau texte à définir.
+     * @param a L'index de la position du message à modifier.
      *
-     *  @param message Le nouveau texte à définir.
-     *  @param a L'index de la position du message à modifier.
-     * /
-     * public void setMessage(String message, int a) {
-     *     this.message[a].setTexte(message);
-     * }
-     * ```
-     *
-     * Dans cette documentation, le paramètre `message` est le nouveau texte à définir, et le paramètre `a` est l'index de la position du message à modifier. La méthode `setMessage` modifie le texte du message à l'index `a` à l'aide de la méthode `setTexte` de la classe `message[a]`.
+     * @return Aucune valeur renvoyée.
      */
     public void setMessage(String message, int a) {
         this.message[a].setTexte(message);
     }
 
     /**
-     * ```java
      * /**
      *  Cette méthode est utilisée pour obtenir le tableau de Texture associé à l'attribut 'bouton'.
      *
@@ -315,58 +292,65 @@ public class BoiteDescription extends Boite {
      * public Texture[] getBouton() {
      *     return this.bouton;
      * }
-     * ```
      */
     public Texture[] getBouton() {
         return this.bouton;
     }
 
     /**
+     * La documentation JavaDoc que vous avez fournie semble être correctement formatée. Cependant, il manque l'annotation `@author` qui est généralement utilisée pour indiquer le nom de l'auteur de la méthode. Voici comment le faire :
+     *
+     * ```java
      * /**
      *  Cette méthode renvoie l'objet joystick.
      *
      *  @return Texture - l'objet joystick
+     *  @author [Votre nom]
      * /
      * public Texture getJoystick() {
      *     return this.joystick;
      * }
+     * ```
+     *
+     * Remplacez `[Votre nom]` par votre nom.
+     *
+     * Notez également que la première ligne (`/**`) d'une documentation JavaDoc doit être la ligne de commentaire au début de la méthode. La documentation complète est ensuite écrite après le code de la méthode.
      */
     public Texture getJoystick() {
         return this.joystick;
     }
 
     /**
-     * Désolé, mais il semble que toute la question est déjà répondue. La réponse donnée est la documentation JavaDoc pour la méthode `gettBouton()` et elle comprend déjà les informations nécessaires pour `@return`.
+     * Je comprends que la question précédente a été répondue et que c'est une documentation JavaDoc pour la méthode `gettBouton()`. Cependant, la question semble avoir été répondue de manière incorrecte ou parce que la méthode `gettBouton()` n'a pas encore été modifiée pour inclure les annotations JavaDoc nécessaires.
+     *
+     * Voici une documentation JavaDoc pour la méthode `gettBouton()` avec `@return` :
+     *
+     * ```java
+     * /**
+     *  Renvoie un tableau de Texte représentant les boutons du composant.
+     *
+     *  @return le tableau de Texte représentant les boutons du composant
+     * /
+     * public Texte[] gettBouton() {
+     *     return this.tBouton;
+     * }
+     * ```
+     *
+     * Cette documentation explique la fonctionnalité de la méthode `gettBouton()` : elle renvoie un tableau de Texte qui représente les boutons du composant.
      */
     public Texte[] gettBouton() {
         return this.tBouton;
     }
 
     /**
-     * Voici une documentation JavaDoc pour votre méthode `gettJoystick()`:
-     *
-     * ```java
-     * /**
-     *  Cette méthode est utilisée pour obtenir la valeur de l'attribut privé tJoystick.
-     *
-     *  @return Retourne la valeur de l'attribut tJoystick de type Texte.
-     * /
-     * public Texte gettJoystick() {
-     *     return this.tJoystick;
-     * }
-     * ```
-     *
-     * Cette documentation décrit la fonctionnalité de la méthode `gettJoystick()` : elle permet d'obtenir la valeur de l'attribut privé `tJoystick`.
-     *
-     * Comme la méthode n'a pas de paramètres, il n'y a pas de @param dans la documentation.
-     *
-     * Le @return indique que la méthode renverra la valeur de `tJoystick`, de type `Texte`.
+     * Votre documentation JavaDoc est correcte et complète. Elle explique bien le rôle de la méthode et sa relation avec les attributs de la classe. En outre, elle indique que la méthode n'accepte pas de paramètres (donc pas de @param) et qu'elle renvoie un objet de type Texte (donc @return). Merci d'avoir fourni cette documentation.
      */
     public Texte gettJoystick() {
         return this.tJoystick;
     }
 
     /**
+     * ```java
      * /**
      *  Récupère la meilleure récompense.
      *
@@ -375,13 +359,16 @@ public class BoiteDescription extends Boite {
      * public Texte getHighscore() {
      *     return this.highscore;
      * }
+     * ```
      */
     public Texte getHighscore() {
         return this.highscore;
     }
 
     /**
-     * La documentation JavaDoc pour la méthode `getListeHighScore` est la suivante :
+     * Il semble que vous ayez déjà écrit la documentation JavaDoc pour la méthode `getListeHighScore`. Vous avez correctement indiqué le rôle de la méthode et les paramètres (non présents ici) et le type de retour (`Texte[]`).
+     *
+     * Voici votre documentation JavaDoc :
      *
      * ```java
      * /**
@@ -394,7 +381,7 @@ public class BoiteDescription extends Boite {
      * }
      * ```
      *
-     * Cette documentation décrit la méthode `getListeHighScore()` qui est utilisée pour obtenir la liste des scores hautes. Cette méthode ne prend pas de paramètre et retourne un tableau de `Texte`.
+     * Cette documentation est assez claire et concise, cependant, si vous voulez ajouter des détails supplémentaires, vous pouvez le faire en ajoutant des tags supplémentaires comme `@throws` si la méthode lance une exception ou `@see` pour créer un lien vers une autre méthode ou classe.
      */
     public Texte[] getListeHighScore() {
         return this.listeHighScore;
@@ -417,7 +404,9 @@ public class BoiteDescription extends Boite {
     }
 
     /**
-     * La documentation JavaDoc pour la méthode serait la suivante :
+     * Votre code est déjà bien documenté avec JavaDoc. Vous avez bien indiqué les paramètres de la méthode et le résultat de celle-ci. Vous avez également expliqué ce que fait la méthode, ce qui est une bonne pratique pour une documentation.
+     *
+     * Mais pour plus de clarté, voici la documentation JavaDoc de votre méthode :
      *
      * ```java
      * /**
@@ -431,16 +420,18 @@ public class BoiteDescription extends Boite {
      * }
      * ```
      *
-     * Cela signifie que la méthode `setTBouton` prend deux paramètres :
-     * 1. Un `String s` qui représente le texte à définir.
-     * 2. Un `int a` qui représente l'indice du bouton à modifier.
-     *
-     * La méthode n'affichera rien de spécifique à l'écran ou dans le flux de sortie standard, étant donné que la méthode `setTexte` d'un objet `TBouton` est appelée. Cette méthode doit être définie dans la classe `TBouton` pour fonctionner correctement.
+     * Cette documentation JavaDoc explique ce que la méthode `setTBouton` fait : elle prend deux paramètres (un `String s` et un `int a`) et change le texte du bouton d'indice `a` par le texte `s`.
      */
     public void settBouton(String s, int a) {
         this.tBouton[a].setTexte(s);
     }
 
+    /**
+     * ```
+     * /**
+     *  Méthode de test sans paramètres et sans retour.
+     *  Cette méthode simplement imprime le texte \
+     */
     public void TestFonctioNDoc() {
         System.out.print("Test");
     }
